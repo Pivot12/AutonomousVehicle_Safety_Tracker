@@ -1,0 +1,10 @@
+{
+  "name": "av-safety-tracker",
+  "version": "1.0.0",
+  "description": "Live dashboard of NHTSA Standing General Order ADS crash data. Static + GitHub Action, $0.",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "build-data": "node scripts/build-data.mjs"
+  }
+}

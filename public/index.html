@@ -1,0 +1,756 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>AV Safety Tracker — NHTSA ADS Crash Data, Live</title>
+<meta name="description" content="A live, interactive dashboard of NHTSA Standing General Order ADS crash reports plus California DMV disengagement rates. Filter, sort, explore." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Mono:wght@500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<style>
+  :root{
+    --bg:#F7F7F4;--panel:#FFFFFF;--panel2:#FBFBF9;--line:#E8E8E2;--line2:#DEDED7;
+    --ink:#15171C;--muted:#66707B;--dim:#98A0AA;
+    --accent:#1F6F6B;--accent-soft:rgba(31,111,107,.08);
+    --petrol:#1F6F6B;--slate:#5B6B7B;--sand:#C9A24B;--clay:#B5634B;--sage:#6E8F6B;
+    --good:#2E7D5B;--mid:#C9A24B;--bad:#C0563B;
+    --shadow:0 1px 2px rgba(20,20,20,.04), 0 10px 30px rgba(20,20,20,.05);
+    --head:"Space Grotesk",system-ui,sans-serif;
+    --mono:"IBM Plex Mono",ui-monospace,monospace;
+    --body:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0}
+  body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:15px;line-height:1.55;-webkit-font-smoothing:antialiased}
+
+  .bg-layer{position:absolute;inset:0;z-index:-1;overflow:hidden;pointer-events:none}
+  .bg-layer svg{position:absolute;inset:0;width:100%;height:100%}
+
+  header{position:relative;padding:26px 28px;border-bottom:1px solid var(--line);display:flex;align-items:center;gap:18px;flex-wrap:wrap;background:var(--panel)}
+  .brand{display:flex;align-items:center;gap:14px;min-width:0}
+  .logo{width:40px;height:40px;flex:0 0 auto}
+  .title{font-family:var(--head);font-weight:700;font-size:21px;letter-spacing:-.4px;color:var(--ink)}
+  .sub{color:var(--muted);font-size:13px;margin-top:3px;max-width:560px}
+  .topcta{margin-left:auto;text-decoration:none;background:var(--accent);color:#fff;padding:11px 18px;border-radius:10px;font-size:13px;font-weight:600;font-family:var(--head);white-space:nowrap;display:inline-flex;align-items:center;gap:8px;transition:.15s;box-shadow:var(--shadow)}
+  .topcta:hover{background:#185a56}
+  .topcta svg{width:15px;height:15px}
+  .meta{margin-left:16px;color:var(--muted);font-size:12px;text-align:right;font-family:var(--mono)}
+
+  .wrap{position:relative;max-width:1160px;margin:0 auto;padding:30px 22px 80px}
+
+  .strip{display:flex;gap:12px;flex-wrap:wrap;align-items:center;margin-bottom:24px;font-size:12.5px;color:var(--muted)}
+  .pill{display:inline-block;padding:4px 12px;border-radius:999px;font-size:11.5px;border:1px solid var(--line2);font-family:var(--mono);background:var(--panel);color:var(--muted)}
+  .pill.active{border-color:var(--accent);color:var(--accent);background:var(--accent-soft)}
+
+  /* tab navigation */
+  .tabs{display:flex;gap:6px;margin:0 0 26px;border-bottom:1px solid var(--line)}
+  .tab{font-family:var(--head);font-size:15px;font-weight:600;color:var(--muted);background:none;border:none;border-bottom:2px solid transparent;padding:12px 18px;cursor:pointer;transition:.15s;margin-bottom:-1px}
+  .tab:hover{color:var(--ink)}
+  .tab.on{color:var(--accent);border-bottom-color:var(--accent)}
+  .tab .b{display:inline-block;margin-left:8px;font-family:var(--mono);font-size:10px;color:var(--dim);font-weight:500}
+  .yearbar{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-bottom:20px}
+  .ybtn{font-family:var(--head);font-size:13px;font-weight:600;color:var(--muted);background:var(--panel);border:1px solid var(--line2);border-radius:999px;padding:7px 15px;cursor:pointer;transition:.12s}
+  .ybtn:hover{color:var(--ink);border-color:var(--dim)}
+  .ybtn.on{background:var(--accent-soft);border-color:var(--accent);color:var(--accent)}
+  .rate-good{color:var(--good)} .rate-mid{color:var(--mid)} .rate-bad{color:var(--bad)}
+
+  .stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:16px;margin-bottom:26px}
+  .stat{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:18px 20px;position:relative;overflow:hidden;box-shadow:var(--shadow)}
+  .stat:before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--accent);opacity:.7}
+  .stat .n{font-family:var(--mono);font-size:28px;font-weight:600;line-height:1.1;letter-spacing:-.5px;color:var(--ink)}
+  .stat .l{color:var(--muted);font-size:12.5px;margin-top:7px}
+
+  .toolbar{display:flex;flex-wrap:wrap;gap:16px;align-items:flex-end;background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:16px 18px;margin-bottom:20px;box-shadow:var(--shadow)}
+  .toolgrp{display:flex;flex-direction:column;gap:8px}
+  .toollabel{font-size:11px;color:var(--muted);font-family:var(--mono);text-transform:uppercase;letter-spacing:.8px}
+  .btnrow{display:flex;flex-wrap:wrap;gap:8px}
+  .fbtn{font-family:var(--head);font-size:12.5px;font-weight:600;color:var(--muted);background:var(--panel2);border:1px solid var(--line2);border-radius:999px;padding:7px 14px;cursor:pointer;transition:all .12s}
+  .fbtn:hover{color:var(--ink);border-color:var(--dim)}
+  .fbtn.on{background:var(--accent-soft);border-color:var(--accent);color:var(--accent)}
+  .fbtn[data-sev="serious"].on,.fbtn[data-sev="fatal"].on{background:rgba(192,86,59,.1);border-color:var(--bad);color:var(--bad)}
+  select,input[type=text]{font-family:var(--mono);font-size:13px;background:var(--panel);color:var(--ink);border:1px solid var(--line2);border-radius:9px;padding:8px 11px}
+  select:focus,input:focus,.fbtn:focus-visible,a:focus-visible,th[role=button]:focus-visible,.tab:focus-visible,.ybtn:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+  .reset{margin-left:auto;align-self:center}
+  .reset .fbtn{color:var(--clay);border-color:rgba(181,99,75,.4)}
+
+  .filternote{font-size:12.5px;color:var(--accent);font-family:var(--mono);margin-bottom:16px;min-height:16px}
+  .filternote .clr{color:var(--clay);cursor:pointer;text-decoration:underline;margin-left:8px}
+
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:20px 22px;min-width:0;box-shadow:var(--shadow)}
+  .card h3{font-family:var(--head);margin:0 0 4px;font-size:15px;font-weight:600;color:var(--ink)}
+  .card .hint{color:var(--dim);font-size:11.5px;margin:0 0 14px;font-family:var(--mono)}
+  .card.full{grid-column:1 / -1}
+  .chartbox{position:relative;height:300px}
+  .chartbox.tall{height:360px}
+  canvas{max-height:100%}
+
+  table{width:100%;border-collapse:collapse;font-size:13px}
+  th,td{text-align:left;padding:9px 8px;border-bottom:1px solid var(--line);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:180px}
+  th{color:var(--muted);font-weight:600;font-family:var(--head);font-size:12px}
+  th[role=button]{cursor:pointer;user-select:none}
+  th[role=button]:hover{color:var(--ink)}
+  th .arrow{color:var(--accent);font-size:10px;margin-left:3px}
+  td.num,th.num{text-align:right;font-family:var(--mono)}
+  td{color:var(--ink)}
+  tbody tr:hover{background:var(--accent-soft)}
+  .tablescroll{max-height:360px;overflow:auto}
+  .sevpill{display:inline-block;padding:2px 9px;border-radius:999px;font-size:11px;border:1px solid var(--line2);font-family:var(--mono)}
+
+  .empty{color:var(--muted);text-align:center;padding:38px 16px;font-size:14px;line-height:1.65}
+  .empty .big{font-family:var(--head);font-size:16px;color:var(--ink);display:block;margin-bottom:6px}
+
+  a{color:var(--accent)}
+  .disclaimer{color:var(--dim);font-size:11.5px;text-align:center;margin-top:30px;line-height:1.65;max-width:780px;margin-left:auto;margin-right:auto}
+
+  footer{border-top:1px solid var(--line);padding:26px;text-align:center;color:var(--muted);font-size:12.5px;background:var(--panel)}
+  footer a{color:var(--muted);margin:0 8px}
+  footer a:hover{color:var(--accent)}
+
+  /* tabs row holds the export button at the right */
+  .tabs{align-items:center}
+  .exportpdf{margin-left:auto;display:inline-flex;align-items:center;gap:7px;font-family:var(--head);font-size:12.5px;font-weight:600;color:var(--accent);background:var(--accent-soft);border:1px solid var(--accent);border-radius:999px;padding:7px 14px;cursor:pointer;transition:.12s;margin-bottom:6px}
+  .exportpdf:hover{background:var(--accent);color:#fff}
+  .exportpdf svg{width:14px;height:14px}
+  .exportpdf:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+
+  /* multi-year hint */
+  .yearhint{font-size:11.5px;color:var(--dim);font-family:var(--mono)}
+
+  /* persistent attribution badge */
+  .attrib{position:fixed;right:14px;bottom:14px;z-index:50;display:inline-flex;align-items:center;gap:6px;background:var(--accent);color:#fff;text-decoration:none;font-family:var(--mono);font-size:11px;font-weight:500;padding:5px 11px;border-radius:999px;box-shadow:0 2px 10px rgba(31,111,107,.28);opacity:.9;transition:.15s}
+  .attrib:hover{opacity:1;color:#fff}
+  .attrib svg{width:12px;height:12px;flex:0 0 auto}
+  @media(max-width:480px){.attrib{display:none}}
+
+  /* print-only header */
+  .printhead{display:none}
+
+  @media(max-width:760px){
+    .grid{grid-template-columns:1fr}
+    .wrap{padding:22px 16px 64px}
+    header{padding:20px 18px}
+    .title{font-size:19px}
+    .meta{margin-left:0;width:100%;text-align:left;margin-top:4px}
+    .reset{margin-left:0;width:100%}
+    th,td{max-width:120px}
+    .chartbox{height:260px}
+    body{font-size:14px}
+    .exportpdf{margin-left:0}
+  }
+
+  @media print{
+    @page{margin:14mm}
+    body{background:#fff !important;font-size:12px}
+    .bg-layer,header,.tabs,.toolbar,.strip,.attrib,.reset,.topcta,
+    .exportpdf,.filternote,#exportPdf{display:none !important}
+    .wrap{max-width:100%;padding:0;margin:0}
+    .printhead{display:block;margin:0 0 14px;padding:0 0 12px;border-bottom:2px solid #1F6F6B}
+    .printhead .pt{font-family:var(--head);font-size:18px;font-weight:700;color:#15171C}
+    .printhead .ps{font-family:var(--mono);font-size:11px;color:#1F6F6B;margin-top:4px}
+    .printhead .pby{font-family:var(--mono);font-size:10px;color:#66707B;margin-top:6px}
+    .card,.stat{box-shadow:none !important;break-inside:avoid;page-break-inside:avoid}
+    .grid{display:block}
+    .card{margin-bottom:14px}
+    .chartbox{height:300px !important}
+    .tablescroll{max-height:none !important;overflow:visible !important}
+    a{color:#15171C !important;text-decoration:none}
+  }
+</style>
+</head>
+<body>
+<div class="bg-layer" aria-hidden="true">
+  <svg viewBox="0 0 1200 800" preserveAspectRatio="xMidYMid slice">
+    <defs>
+      <pattern id="grid" width="44" height="44" patternUnits="userSpaceOnUse">
+        <path d="M44 0 L0 0 0 44" fill="none" stroke="#15171C" stroke-width="1"/>
+      </pattern>
+      <radialGradient id="glow" cx="84%" cy="0%" r="60%">
+        <stop offset="0%" stop-color="#1F6F6B" stop-opacity="0.05"/>
+        <stop offset="100%" stop-color="#1F6F6B" stop-opacity="0"/>
+      </radialGradient>
+    </defs>
+    <rect width="1200" height="800" fill="url(#grid)" opacity="0.04"/>
+    <rect width="1200" height="800" fill="url(#glow)"/>
+    <g stroke="#1F6F6B" fill="none" opacity="0.05">
+      <circle cx="1010" cy="120" r="120"/>
+      <circle cx="1010" cy="120" r="220"/>
+      <circle cx="1010" cy="120" r="320"/>
+      <circle cx="1010" cy="120" r="430"/>
+      <line x1="1010" y1="120" x2="1440" y2="120"/>
+      <line x1="1010" y1="120" x2="1010" y2="550"/>
+      <line x1="1010" y1="120" x2="710" y2="420"/>
+    </g>
+  </svg>
+</div>
+
+<header>
+  <div class="brand">
+    <svg class="logo" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="AV Safety Tracker logo">
+      <defs>
+        <linearGradient id="lgShield" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#27817C"/>
+          <stop offset="1" stop-color="#1A615D"/>
+        </linearGradient>
+      </defs>
+      <path d="M24 4 L40 9.6 V23.2 C40 33.4 32.9 40.9 24 44 C15.1 40.9 8 33.4 8 23.2 V9.6 Z" fill="url(#lgShield)"/>
+      <circle cx="24" cy="22.5" r="10.5" fill="none" stroke="#FFFFFF" stroke-width="1.5" opacity=".32"/>
+      <circle cx="24" cy="22.5" r="6" fill="none" stroke="#FFFFFF" stroke-width="1.5" opacity=".55"/>
+      <path d="M24 22.5 L33.4 15.4" stroke="#FFFFFF" stroke-width="1.8" stroke-linecap="round"/>
+      <circle cx="24" cy="22.5" r="2.6" fill="#FFFFFF"/>
+      <circle cx="33.4" cy="15.4" r="2.1" fill="#C9A24B"/>
+    </svg>
+    <div>
+      <div class="title">AV Safety Tracker</div>
+      <div class="sub">NHTSA crash reports + California disengagement rates — the public AV-safety record, live</div>
+    </div>
+  </div>
+  <a href="pro.html" class="topcta">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 17 9 11 13 15 21 7"/><polyline points="14 7 21 7 21 14"/></svg>
+    Monthly brief →
+  </a>
+  <div class="meta" id="meta">loading…</div>
+</header>
+
+<div class="wrap">
+  <div class="printhead" id="printHead" aria-hidden="true">
+    <div class="pt" id="printTitle">AV Safety Tracker</div>
+    <div class="ps" id="printSub"></div>
+    <div class="pby">Prepared by Neel Shah · linkedin.com/in/neelshah29 · Source: NHTSA SGO / CA DMV</div>
+  </div>
+  <div class="strip">
+    <span class="pill active">🇺🇸 US Coverage</span>
+    <span>NHTSA SGO (federal, all states) + California DMV</span>
+    <span style="margin-left:auto" class="pill">🔄 Pipeline: official CSVs → auto-refresh → this dashboard</span>
+  </div>
+
+  <div class="tabs" role="tablist">
+    <button class="tab on" data-view="nhtsa" type="button">NHTSA Crash Reports <span class="b">federal · live</span></button>
+    <button class="tab" data-view="dmv" type="button">CA Disengagements <span class="b">2021–2025</span></button>
+    <button class="exportpdf" id="exportPdf" type="button" title="Export the current view as a PDF">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9V2h12v7"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+      Export PDF
+    </button>
+  </div>
+
+  <div id="viewNhtsa">
+    <div class="stats" id="stats"></div>
+
+    <div class="toolbar" id="toolbar" hidden>
+      <div class="toolgrp">
+        <span class="toollabel">Filter by severity:</span>
+        <div class="btnrow" id="sevButtons"></div>
+      </div>
+      <div class="toolgrp">
+        <span class="toollabel">Time range</span>
+        <div class="btnrow">
+          <select id="fromMonth" aria-label="From month"></select>
+          <span style="align-self:center;color:var(--dim)">→</span>
+          <select id="toMonth" aria-label="To month"></select>
+        </div>
+      </div>
+      <div class="reset"><button class="fbtn" id="resetBtn" type="button">↺ Reset filters</button></div>
+    </div>
+
+    <div class="filternote" id="filterNote"></div>
+
+    <div class="grid" id="grid">
+      <div class="card full">
+        <h3>Reported ADS incidents over time</h3>
+        <p class="hint">Hover a point for the exact count · use the time-range selectors above to zoom</p>
+        <div class="chartbox"><canvas id="timeChart"></canvas></div>
+      </div>
+      <div class="card">
+        <h3>Top reporting companies</h3>
+        <p class="hint">▸ Click a company bar to filter the whole dashboard</p>
+        <div class="chartbox"><canvas id="entityChart"></canvas></div>
+      </div>
+      <div class="card">
+        <h3>Highest injury severity alleged</h3>
+        <p class="hint">▸ Click a slice (or a button above) to filter by severity</p>
+        <div class="chartbox"><canvas id="sevChart"></canvas></div>
+      </div>
+      <div class="card">
+        <h3>Incidents by state (top 15)</h3>
+        <p class="hint">Click a header to sort</p>
+        <div class="tablescroll"><div id="stateTable"></div></div>
+      </div>
+      <div class="card">
+        <h3>Most recent reports</h3>
+        <p class="hint">Click any header to sort · reflects active filters</p>
+        <div class="tablescroll"><div id="recentTable"></div></div>
+      </div>
+    </div>
+
+    <div class="disclaimer">
+      Source: <a id="srcLink" href="#" target="_blank" rel="noopener">NHTSA SGO 2021-01 (ADS)</a>. Counts reflect what manufacturers/operators report under the Standing General Order; reporting practices differ by company, so totals are not a direct measure of relative safety. Reference only.
+    </div>
+  </div><!-- /viewNhtsa -->
+
+  <div id="viewDmv" hidden>
+    <div class="strip">
+      <span class="pill active">🐻 California DMV</span>
+      <span>Disengagements per 1,000 autonomous miles — the most-cited AV reliability metric</span>
+      <span style="margin-left:auto" class="pill" id="dmvMeta">—</span>
+    </div>
+    <div class="yearbar">
+      <span class="toollabel">Reporting year:</span>
+      <span class="btnrow" id="yearButtons"></span>
+      <span class="yearhint">select one or more years</span>
+    </div>
+    <div class="stats" id="dmvStats"></div>
+    <div class="grid">
+      <div class="card full">
+        <h3>Disengagements per 1,000 autonomous miles — by company</h3>
+        <p class="hint">Lower is better · companies with ≥ 5,000 reported miles · hover a bar for the exact rate</p>
+        <div class="chartbox tall"><canvas id="rateChart"></canvas></div>
+      </div>
+      <div class="card">
+        <h3>Autonomous miles driven</h3>
+        <p class="hint">Log scale — exposes the enormous fleet-size gap (top 12)</p>
+        <div class="chartbox"><canvas id="milesChart"></canvas></div>
+      </div>
+      <div class="card">
+        <h3>Full table</h3>
+        <p class="hint">Click a header to sort · rate colour-coded</p>
+        <div class="tablescroll"><div id="dmvTable"></div></div>
+      </div>
+    </div>
+    <div class="disclaimer">
+      Source: <a href="https://www.dmv.ca.gov/portal/vehicle-industry-services/autonomous-vehicles/disengagement-reports/" target="_blank" rel="noopener">California DMV Disengagement &amp; Mileage Reports</a> (2021–2025). A disengagement is any time the autonomous system returned control to a safety driver. Reporting definitions differ by company, so rates are directional — not a strict safety ranking.
+    </div>
+  </div><!-- /viewDmv -->
+</div>
+
+<footer>
+  <div>AV Safety Tracker · built on public NHTSA &amp; California DMV data</div>
+  <div style="margin-top:8px">
+    <a href="pro.html">Monthly brief</a>·
+    <a href="privacy.html">Privacy</a>·
+    <a href="pro.html#contact">Contact</a>
+  </div>
+  <div style="margin-top:10px;color:var(--dim)">Built by <a href="https://linkedin.com/in/neelshah29" target="_blank" rel="noopener">Neel Shah</a> · linkedin.com/in/neelshah29</div>
+</footer>
+
+<a class="attrib" href="https://linkedin.com/in/neelshah29" target="_blank" rel="noopener" aria-label="Neel Shah on LinkedIn">
+  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9h4v12H3zM10 9h3.8v1.7h.05c.53-1 1.83-2.05 3.77-2.05 4.03 0 4.78 2.65 4.78 6.1V21h-4v-5.4c0-1.3 0-2.95-1.8-2.95s-2.08 1.4-2.08 2.85V21H10z"/></svg>
+  Neel Shah · linkedin.com/in/neelshah29
+</a>
+
+<script>
+/* ===== SHARED CONTRACT ===== */
+const APP_NAME = "AV Safety Tracker";
+const WEBHOOK_URL = "REPLACE_WITH_APPS_SCRIPT_URL";
+const _t0 = Date.now();
+const _ctx = () => ({ app: APP_NAME, ts: new Date().toISOString(), tz: Intl.DateTimeFormat().resolvedOptions().timeZone, lang: navigator.language, ref: document.referrer });
+function _beacon(p){ if(!WEBHOOK_URL||WEBHOOK_URL.startsWith("REPLACE"))return; try{ const b=new Blob([JSON.stringify(p)],{type:"text/plain;charset=utf-8"}); navigator.sendBeacon ? navigator.sendBeacon(WEBHOOK_URL,b) : fetch(WEBHOOK_URL,{method:"POST",headers:{"Content-Type":"text/plain;charset=utf-8"},body:JSON.stringify(p),keepalive:true}); }catch(e){} }
+async function _post(p){ if(!WEBHOOK_URL||WEBHOOK_URL.startsWith("REPLACE"))return; try{ await fetch(WEBHOOK_URL,{method:"POST",headers:{"Content-Type":"text/plain;charset=utf-8"},body:JSON.stringify(p)}); }catch(e){} }
+_beacon({type:"pageview", path:location.pathname, ..._ctx()});
+document.addEventListener("visibilitychange",()=>{ if(document.visibilityState==="hidden"){ _beacon({type:"duration", app:APP_NAME, ts:new Date().toISOString(), seconds:Math.round((Date.now()-_t0)/1000)}); }});
+/* =========================== */
+
+const PALETTE = ["#1F6F6B","#5B6B7B","#C9A24B","#B5634B","#6E8F6B","#3F7D78","#8A7B5C","#7B8A99","#A87B5C","#4E8C84"];
+Chart.defaults.color = "#15171C";
+Chart.defaults.borderColor = "#E8E8E2";
+Chart.defaults.font.family = "'IBM Plex Mono', monospace";
+Chart.defaults.font.size = 11;
+
+function sevClass(s){ s=(s||"").toLowerCase(); if(/fatal/.test(s))return"fatal"; if(/serious/.test(s))return"serious"; if(/minor/.test(s))return"minor"; if(/no inj|none|property/.test(s))return"none"; return"other"; }
+function sevColor(cls){ return {fatal:"#B5634B",serious:"#C9A24B",minor:"#6E8F6B",none:"#5B6B7B",other:"#98A0AA"}[cls]||"#98A0AA"; }
+function sevPill(s){ if(!s) return "—"; const c=sevColor(sevClass(s)); return `<span class="sevpill" style="border-color:${c};color:${c}">${esc(s)}</span>`; }
+function esc(x){ return String(x).replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[m])); }
+
+let DATA=null;
+let charts={};
+const state={ entity:null, severity:null, fromIdx:0, toIdx:0, months:[] };
+const sort={ state:{key:"count",dir:-1}, recent:{key:0,dir:-1} };
+
+function elFrag(html){const t=document.createElement("template");t.innerHTML=html.trim();return t.content.firstChild;}
+
+async function load(){
+  let d;
+  try{ d = await (await fetch("data/av_safety.json",{cache:"no-store"})).json(); }
+  catch{ document.getElementById("meta").textContent="data unavailable"; renderEmpty("Couldn't load the data file."); return; }
+  DATA=d;
+
+  const empty = !d.meta || !d.meta.totalIncidents;
+  document.getElementById("srcLink").href = (d.meta && d.meta.sourceUrl) || "#";
+  document.getElementById("meta").innerHTML = empty
+    ? "Awaiting first data refresh — run the GitHub Action."
+    : `Updated ${new Date(d.meta.fetchedAt).toLocaleDateString()} · ${esc(d.meta.dateRange||"")}`;
+
+  renderStats(d, empty);
+  if(empty){ renderEmpty(); return; }
+
+  state.months = (d.byMonth||[]).map(x=>x.month);
+  state.fromIdx = 0;
+  state.toIdx = Math.max(0, state.months.length-1);
+
+  buildToolbar(d);
+  initCharts(d);
+  rerender();
+}
+
+function renderStats(d, empty){
+  const stats=document.getElementById("stats");
+  stats.innerHTML="";
+  const topEntity = (d.byEntity||[])[0];
+  const serious = (d.bySeverity||[]).filter(s=>/fatal|serious/i.test(s.name)).reduce((a,s)=>a+s.count,0);
+  stats.append(
+    elFrag(`<div class="stat"><div class="n" id="statTotal">${(d.meta?.totalIncidents||0).toLocaleString()}</div><div class="l">Total ADS incidents reported</div></div>`),
+    elFrag(`<div class="stat"><div class="n">${(d.byEntity||[]).length||0}</div><div class="l">Reporting companies</div></div>`),
+    elFrag(`<div class="stat"><div class="n" style="font-size:${topEntity&&topEntity.name.length>14?'17px':'22px'}">${topEntity?esc(topEntity.name):"—"}</div><div class="l">Top reporter (${topEntity?topEntity.count:0})</div></div>`),
+    elFrag(`<div class="stat"><div class="n" style="color:var(--bad)">${serious.toLocaleString()}</div><div class="l">Serious / fatal injury alleged</div></div>`)
+  );
+}
+
+function renderEmpty(msg){
+  document.getElementById("toolbar").hidden = true;
+  document.getElementById("grid").innerHTML =
+    `<div class="card full"><div class="empty"><span class="big">No incidents yet</span>${esc(msg||"The dataset is in its seed state. Once the daily NHTSA refresh runs (GitHub Action), charts, filters, and the recent-incidents table will populate here automatically.")}</div></div>`;
+}
+
+function buildToolbar(d){
+  const tb=document.getElementById("toolbar"); tb.hidden=false;
+  const sevBox=document.getElementById("sevButtons");
+  sevBox.innerHTML="";
+  const all=document.createElement("button");
+  all.className="fbtn on"; all.type="button"; all.textContent="All"; all.dataset.sev="";
+  all.onclick=()=>setSeverity(null);
+  sevBox.appendChild(all);
+  (d.bySeverity||[]).forEach(s=>{
+    const b=document.createElement("button");
+    b.className="fbtn"; b.type="button"; b.textContent=s.name; b.dataset.sev=sevClass(s.name);
+    b.dataset.name=s.name;
+    b.onclick=()=>setSeverity(s.name);
+    sevBox.appendChild(b);
+  });
+  const from=document.getElementById("fromMonth"), to=document.getElementById("toMonth");
+  from.innerHTML=""; to.innerHTML="";
+  state.months.forEach((m,i)=>{
+    from.appendChild(new Option(m,i));
+    to.appendChild(new Option(m,i));
+  });
+  from.value=state.fromIdx; to.value=state.toIdx;
+  from.onchange=()=>{ state.fromIdx=Math.min(+from.value, state.toIdx); from.value=state.fromIdx; rerender(); };
+  to.onchange=()=>{ state.toIdx=Math.max(+to.value, state.fromIdx); to.value=state.toIdx; rerender(); };
+  document.getElementById("resetBtn").onclick=resetFilters;
+}
+
+function setSeverity(name){
+  state.severity = (state.severity===name)?null:name;
+  document.querySelectorAll("#sevButtons .fbtn").forEach(b=>{
+    const isAll=b.dataset.name===undefined;
+    const match = isAll ? state.severity===null : b.dataset.name===state.severity;
+    b.classList.toggle("on", match);
+  });
+  rerender();
+}
+function setEntity(name){ state.entity=(state.entity===name)?null:name; rerender(); }
+function resetFilters(){
+  state.entity=null; state.severity=null;
+  state.fromIdx=0; state.toIdx=Math.max(0,state.months.length-1);
+  document.getElementById("fromMonth").value=state.fromIdx;
+  document.getElementById("toMonth").value=state.toIdx;
+  document.querySelectorAll("#sevButtons .fbtn").forEach(b=>b.classList.toggle("on", b.dataset.name===undefined));
+  rerender();
+}
+
+function filteredRecent(){
+  const rows=(DATA.recent||[]).filter(r=>{
+    if(state.entity && r.entity!==state.entity) return false;
+    if(state.severity && r.severity!==state.severity) return false;
+    if(state.months.length){
+      const ym=r.ym || (r.date||"").slice(0,7);
+      const lo=state.months[state.fromIdx], hi=state.months[state.toIdx];
+      if(ym){ if(ym<lo || ym>hi) return false; }
+    }
+    return true;
+  });
+  return rows;
+}
+
+function initCharts(d){
+  charts.time=new Chart(document.getElementById("timeChart"),{
+    type:"line",
+    data:{labels:[],datasets:[{label:"Incidents",data:[],borderColor:"#1F6F6B",backgroundColor:"rgba(31,111,107,.10)",fill:true,tension:.25,pointRadius:2,pointHoverRadius:5,pointHoverBackgroundColor:"#C9A24B"}]},
+    options:{maintainAspectRatio:false,interaction:{mode:"index",intersect:false},plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>` ${c.parsed.y} incident${c.parsed.y===1?"":"s"}`}}},scales:{y:{beginAtZero:true,grid:{color:"#E8E8E2"}},x:{grid:{display:false}}}}
+  });
+  charts.entity=new Chart(document.getElementById("entityChart"),{
+    type:"bar",
+    data:{labels:[],datasets:[{label:"Incidents",data:[],backgroundColor:[],borderRadius:4}]},
+    options:{maintainAspectRatio:false,indexAxis:"y",plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>` ${c.parsed.x} incidents — click to filter`}}},scales:{x:{beginAtZero:true,grid:{color:"#E8E8E2"}},y:{grid:{display:false}}},
+      onClick:(e,els)=>{ if(els.length){ const name=charts.entity.data.labels[els[0].index]; setEntity(name); } },
+      onHover:(e,els)=>{ e.native.target.style.cursor=els.length?"pointer":"default"; }}
+  });
+  charts.sev=new Chart(document.getElementById("sevChart"),{
+    type:"doughnut",
+    data:{labels:[],datasets:[{data:[],backgroundColor:[],borderColor:"#FFFFFF",borderWidth:2}]},
+    options:{maintainAspectRatio:false,plugins:{legend:{position:"right",labels:{boxWidth:12,padding:10}},tooltip:{callbacks:{label:c=>` ${c.label}: ${c.parsed} — click to filter`}}},
+      onClick:(e,els)=>{ if(els.length){ const name=charts.sev.data.labels[els[0].index]; setSeverity(name); } },
+      onHover:(e,els)=>{ e.native.target.style.cursor=els.length?"pointer":"default"; }}
+  });
+}
+
+function rerender(){
+  const d=DATA;
+  const lo=state.fromIdx, hi=state.toIdx;
+  const months=(d.byMonth||[]).slice(lo,hi+1);
+  charts.time.data.labels=months.map(x=>x.month);
+  charts.time.data.datasets[0].data=months.map(x=>x.count);
+  charts.time.update();
+
+  const ents=(d.byEntity||[]).slice(0,12);
+  charts.entity.data.labels=ents.map(x=>x.name);
+  charts.entity.data.datasets[0].data=ents.map(x=>x.count);
+  charts.entity.data.datasets[0].backgroundColor=ents.map(x=>
+    state.entity ? (x.name===state.entity ? "#1F6F6B" : "rgba(91,107,123,.28)") : "#5B6B7B");
+  charts.entity.update();
+
+  const sevs=(d.bySeverity||[]);
+  charts.sev.data.labels=sevs.map(x=>x.name);
+  charts.sev.data.datasets[0].data=sevs.map(x=>x.count);
+  charts.sev.data.datasets[0].backgroundColor=sevs.map((x,i)=>{
+    const base=sevColor(sevClass(x.name));
+    if(!state.severity) return base;
+    return x.name===state.severity ? base : "rgba(152,160,170,.25)";
+  });
+  charts.sev.update();
+
+  renderStateTable();
+  renderRecentTable();
+  renderFilterNote();
+}
+
+function renderFilterNote(){
+  const fn=document.getElementById("filterNote");
+  const parts=[];
+  if(state.entity) parts.push(`company = ${esc(state.entity)}`);
+  if(state.severity) parts.push(`severity = ${esc(state.severity)}`);
+  if(state.fromIdx>0 || state.toIdx<state.months.length-1) parts.push(`${state.months[state.fromIdx]} → ${state.months[state.toIdx]}`);
+  if(!parts.length){ fn.innerHTML="Showing all reported incidents. Click a company, a severity, or set a time range to filter."; return; }
+  fn.innerHTML=`Active filter: ${parts.join("  ·  ")} <span class="clr" id="clrInline">clear all</span>`;
+  document.getElementById("clrInline").onclick=resetFilters;
+}
+
+function renderStateTable(){
+  const rows=(DATA.byState||[]).map(s=>[s.name, s.count]);
+  const s=sort.state;
+  rows.sort((a,b)=>{
+    const k = s.key==="name" ? 0 : 1;
+    let av=a[k], bv=b[k];
+    if(typeof av==="string"){ return s.dir*av.localeCompare(bv); }
+    return s.dir*(av-bv);
+  });
+  const cont=document.getElementById("stateTable");
+  cont.innerHTML="";
+  cont.appendChild(buildTable(
+    [{label:"State",key:"name"},{label:"Incidents",key:"count",num:true}],
+    rows.map(r=>[esc(r[0]), {num:true,html:r[1].toLocaleString()}]),
+    sort.state, (key)=>{ if(sort.state.key===key)sort.state.dir*=-1; else {sort.state.key=key;sort.state.dir=key==="name"?1:-1;} renderStateTable(); }
+  ));
+}
+
+function renderRecentTable(){
+  const raw=filteredRecent();
+  const cols=[
+    {label:"Date",get:r=>r.date||r.ym||"—"},
+    {label:"Company",get:r=>r.entity||"—"},
+    {label:"Make/Model",get:r=>[r.make,r.model].filter(Boolean).join(" ")||"—"},
+    {label:"State",get:r=>r.state||"—"},
+    {label:"Crash with",get:r=>r.crashWith||"—"},
+    {label:"Severity",get:r=>r.severity||""}
+  ];
+  const s=sort.recent;
+  const rows=raw.slice().sort((a,b)=>{
+    const av=cols[s.key].get(a)||"", bv=cols[s.key].get(b)||"";
+    return s.dir*String(av).localeCompare(String(bv),undefined,{numeric:true});
+  });
+  const cont=document.getElementById("recentTable");
+  cont.innerHTML="";
+  if(!rows.length){ cont.innerHTML=`<div class="empty">No incidents match the current filter. <span class="clr" style="color:var(--clay);cursor:pointer;text-decoration:underline" onclick="resetFilters()">Clear filters</span></div>`; return; }
+  const display=rows.slice(0,60);
+  cont.appendChild(buildTable(
+    cols.map((c,i)=>({label:c.label,key:i})),
+    display.map(r=>cols.map((c,i)=> i===5 ? {html:sevPill(c.get(r))} : esc(c.get(r)) )),
+    sort.recent,
+    (key)=>{ if(sort.recent.key===key)sort.recent.dir*=-1; else {sort.recent.key=key;sort.recent.dir=1;} renderRecentTable(); }
+  ));
+  if(rows.length>display.length){
+    cont.appendChild(elFrag(`<div style="color:var(--dim);font-size:11px;padding:8px;text-align:center;font-family:var(--mono)">Showing ${display.length} of ${rows.length} matching incidents</div>`));
+  }
+}
+
+function buildTable(cols, rows, sortState, onSort){
+  const t=document.createElement("table");
+  const thead=document.createElement("thead");
+  const trh=document.createElement("tr");
+  cols.forEach(c=>{
+    const th=document.createElement("th");
+    if(c.num) th.className="num";
+    th.setAttribute("role","button");
+    th.tabIndex=0;
+    const active = sortState.key===c.key;
+    th.innerHTML=`${esc(c.label)}${active?`<span class="arrow">${sortState.dir>0?"▲":"▼"}</span>`:""}`;
+    th.onclick=()=>onSort(c.key);
+    th.onkeydown=(e)=>{ if(e.key==="Enter"||e.key===" "){ e.preventDefault(); onSort(c.key);} };
+    trh.appendChild(th);
+  });
+  thead.appendChild(trh); t.appendChild(thead);
+  const tb=document.createElement("tbody");
+  rows.forEach(r=>{
+    const tr=document.createElement("tr");
+    r.forEach(cell=>{
+      const td=document.createElement("td");
+      if(cell && typeof cell==="object"){ if(cell.num)td.className="num"; td.innerHTML=cell.html; }
+      else td.textContent=cell;
+      tr.appendChild(td);
+    });
+    tb.appendChild(tr);
+  });
+  t.appendChild(tb);
+  return t;
+}
+
+/* ===================== CA DMV DISENGAGEMENTS TAB ===================== */
+let DMV=null, dmvInit=false, currentView="nhtsa";
+const dmvState={years:new Set()};
+const sortDmv={key:"ratePer1kMiles",dir:1};
+const dmvCharts={};
+
+function initTabs(){ document.querySelectorAll(".tab").forEach(t=>{ t.onclick=()=>switchView(t.dataset.view); }); }
+function switchView(v){
+  currentView=v;
+  document.querySelectorAll(".tab").forEach(t=>t.classList.toggle("on",t.dataset.view===v));
+  document.getElementById("viewNhtsa").hidden = v!=="nhtsa";
+  document.getElementById("viewDmv").hidden  = v!=="dmv";
+  if(v==="dmv"){
+    if(DMV && !dmvInit){ initDmv(); dmvInit=true; }
+    else if(dmvInit){ Object.values(dmvCharts).forEach(c=>c.resize()); }
+  }
+}
+async function loadDmv(){
+  try{ DMV=await (await fetch("data/caldmv_disengagements.json",{cache:"no-store"})).json(); }
+  catch{ DMV=null; }
+  if(currentView==="dmv" && DMV && !dmvInit){ initDmv(); dmvInit=true; }
+}
+function rateBand(r){ if(r==null)return""; if(r<1)return"good"; if(r<5)return"mid"; return"bad"; }
+function rateColor(r){ return {good:"#2E7D5B",mid:"#C9A24B",bad:"#C0563B"}[rateBand(r)]||"#98A0AA"; }
+
+function initDmv(){
+  if(!DMV||!DMV.byYear){ document.getElementById("dmvStats").innerHTML=`<div class="empty"><span class="big">Dataset not found</span>The processed file lives at data/caldmv_disengagements.json.</div>`; return; }
+  const years=DMV.meta.yearsAvailable||Object.keys(DMV.byYear);
+  dmvState.years=new Set([years[years.length-1]]); // default: latest year only
+  const yb=document.getElementById("yearButtons"); yb.innerHTML="";
+  years.forEach(y=>{
+    const b=document.createElement("button");
+    b.className="ybtn"+(dmvState.years.has(y)?" on":""); b.type="button"; b.textContent=y;
+    b.onclick=()=>{
+      if(dmvState.years.has(y)){
+        if(dmvState.years.size>1) dmvState.years.delete(y); // keep at least one year selected
+      } else { dmvState.years.add(y); }
+      document.querySelectorAll("#yearButtons .ybtn").forEach(x=>x.classList.toggle("on",dmvState.years.has(x.textContent)));
+      dmvRerender();
+    };
+    yb.appendChild(b);
+  });
+  dmvCharts.rate=new Chart(document.getElementById("rateChart"),{type:"bar",
+    data:{labels:[],datasets:[{label:"per 1k mi",data:[],backgroundColor:[],borderRadius:4}]},
+    options:{maintainAspectRatio:false,indexAxis:"y",plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>` ${c.parsed.x} per 1,000 mi`}}},scales:{x:{beginAtZero:true,grid:{color:"#E8E8E2"},title:{display:true,text:"disengagements per 1,000 mi — lower is better",color:"#98A0AA"}},y:{grid:{display:false}}}}});
+  dmvCharts.miles=new Chart(document.getElementById("milesChart"),{type:"bar",
+    data:{labels:[],datasets:[{label:"miles",data:[],backgroundColor:"#1F6F6B",borderRadius:4}]},
+    options:{maintainAspectRatio:false,indexAxis:"y",plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>` ${Number(c.parsed.x).toLocaleString()} mi`}}},scales:{x:{type:"logarithmic",grid:{color:"#E8E8E2"}},y:{grid:{display:false}}}}});
+  dmvRerender();
+}
+
+// aggregate miles + disengagements per company across the selected years,
+// then recompute per-1,000-mi rate on the summed totals
+function dmvAggregate(){
+  const yearsAvail=DMV.meta.yearsAvailable||Object.keys(DMV.byYear);
+  const sel=yearsAvail.filter(y=>dmvState.years.has(y)); // preserve chronological order
+  const agg={};
+  sel.forEach(y=>{
+    (DMV.byYear[y]||[]).forEach(x=>{
+      const k=x.manufacturer;
+      if(!agg[k]) agg[k]={manufacturer:k, miles:0, disengagements:0};
+      agg[k].miles += (x.miles||0);
+      agg[k].disengagements += (x.disengagements||0);
+    });
+  });
+  const rows=Object.values(agg).map(r=>{
+    r.ratePer1kMiles = r.miles>0 ? +(r.disengagements/r.miles*1000).toFixed(3) : null;
+    return r;
+  });
+  return {rows, sel};
+}
+
+function dmvLabel(sel){
+  if(sel.length===1) return sel[0];
+  // contiguous range → compact "2021–2025", else comma list
+  const nums=sel.map(Number).sort((a,b)=>a-b);
+  const contiguous=nums.every((n,i)=>i===0||n===nums[i-1]+1);
+  return contiguous ? `${nums[0]}–${nums[nums.length-1]}` : sel.join(", ");
+}
+
+function dmvRerender(){
+  const {rows, sel}=dmvAggregate();
+  const label=dmvLabel(sel);
+  document.getElementById("dmvMeta").textContent=`${label} · ${rows.length} companies`;
+  const miles=rows.reduce((a,x)=>a+(x.miles||0),0);
+  const dis=rows.reduce((a,x)=>a+(x.disengagements||0),0);
+  const fleetRate=miles>0?(dis/miles*1000):0;
+  const top=rows.slice().sort((a,b)=>b.miles-a.miles)[0];
+  const yrLbl=sel.length>1?`${sel.length} yrs`:label;
+  const ds=document.getElementById("dmvStats"); ds.innerHTML="";
+  ds.append(
+    elFrag(`<div class="stat"><div class="n">${miles.toLocaleString()}</div><div class="l">Autonomous miles (${esc(label)})</div></div>`),
+    elFrag(`<div class="stat"><div class="n">${dis.toLocaleString()}</div><div class="l">Total disengagements (${esc(yrLbl)})</div></div>`),
+    elFrag(`<div class="stat"><div class="n" style="color:${rateColor(fleetRate)}">${fleetRate.toFixed(3)}</div><div class="l">Fleet-wide rate / 1,000 mi</div></div>`),
+    elFrag(`<div class="stat"><div class="n" style="font-size:${top&&top.manufacturer.length>14?'16px':'22px'}">${top?esc(top.manufacturer):"—"}</div><div class="l">Most miles (${top?top.miles.toLocaleString():0})</div></div>`)
+  );
+  const rated=rows.filter(x=>x.miles>=5000 && x.ratePer1kMiles!=null).sort((a,b)=>a.ratePer1kMiles-b.ratePer1kMiles);
+  dmvCharts.rate.data.labels=rated.map(x=>x.manufacturer);
+  dmvCharts.rate.data.datasets[0].data=rated.map(x=>x.ratePer1kMiles);
+  dmvCharts.rate.data.datasets[0].backgroundColor=rated.map(x=>rateColor(x.ratePer1kMiles));
+  dmvCharts.rate.update();
+  const bm=rows.slice().sort((a,b)=>b.miles-a.miles).slice(0,12);
+  dmvCharts.miles.data.labels=bm.map(x=>x.manufacturer);
+  dmvCharts.miles.data.datasets[0].data=bm.map(x=>x.miles);
+  dmvCharts.miles.update();
+  renderDmvTable(rows);
+}
+
+function renderDmvTable(rows){
+  const s=sortDmv;
+  const sorted=rows.slice().sort((a,b)=>{
+    if(s.key==="manufacturer") return s.dir*String(a.manufacturer).localeCompare(String(b.manufacturer));
+    let av=a[s.key]==null?-1:a[s.key], bv=b[s.key]==null?-1:b[s.key];
+    return s.dir*(av-bv);
+  });
+  const cont=document.getElementById("dmvTable"); cont.innerHTML="";
+  cont.appendChild(buildTable(
+    [{label:"Company",key:"manufacturer"},{label:"Miles",key:"miles",num:true},{label:"Diseng.",key:"disengagements",num:true},{label:"Per 1k mi",key:"ratePer1kMiles",num:true}],
+    sorted.map(x=>[esc(x.manufacturer),{num:true,html:(x.miles||0).toLocaleString()},{num:true,html:(x.disengagements||0).toLocaleString()},{num:true,html:x.ratePer1kMiles==null?"—":`<span class="rate-${rateBand(x.ratePer1kMiles)}">${x.ratePer1kMiles}</span>`}]),
+    sortDmv,
+    (key)=>{ if(sortDmv.key===key)sortDmv.dir*=-1; else {sortDmv.key=key;sortDmv.dir=key==="manufacturer"?1:-1;} renderDmvTable(rows); }
+  ));
+}
+
+/* ===== EXPORT PDF (print current, filtered view) ===== */
+function updatePrintHead(){
+  const isDmv = currentView==="dmv";
+  document.getElementById("printSub").textContent = isDmv
+    ? "California DMV Disengagements" + (DMV ? " · "+(document.getElementById("dmvMeta").textContent||"") : "")
+    : "NHTSA ADS Crash Reports" + (DATA&&DATA.meta&&DATA.meta.dateRange ? " · "+DATA.meta.dateRange : "");
+}
+document.getElementById("exportPdf").onclick=()=>{ updatePrintHead(); window.print(); };
+window.addEventListener("beforeprint", updatePrintHead);
+
+load();
+loadDmv();
+initTabs();
+</script>
+</body>
+</html>

@@ -1,0 +1,29 @@
+name: Refresh AV safety data
+
+# Refresh daily at 10:00 UTC. (NHTSA itself republishes ~monthly, so most days are no-ops —
+# but daily polling guarantees we catch every update within 24h with zero effort.)
+on:
+  schedule:
+    - cron: "0 10 * * *"
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+      - name: Build dataset from NHTSA SGO
+        run: node scripts/build-data.mjs
+      - name: Commit refreshed data
+        run: |
+          git config user.name "av-safety-bot"
+          git config user.email "actions@github.com"
+          git add public/data/av_safety.json
+          git commit -m "data: refresh AV safety dataset $(date -u +%Y-%m-%d)" || echo "No changes"
+          git push

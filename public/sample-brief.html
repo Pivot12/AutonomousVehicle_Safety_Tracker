@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>AV Safety Intelligence — Sample Brief</title>
+<meta name="robots" content="noindex" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Mono:wght@500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{--bg:#F7F7F4;--panel:#FFFFFF;--line:#E8E8E2;--line2:#DEDED7;--ink:#15171C;--muted:#66707B;--dim:#98A0AA;
+    --accent:#1F6F6B;--accent-soft:rgba(31,111,107,.08);--good:#2E7D5B;--mid:#C9A24B;--bad:#C0563B;
+    --shadow:0 1px 2px rgba(20,20,20,.04),0 10px 30px rgba(20,20,20,.05);
+    --head:"Space Grotesk",system-ui,sans-serif;--mono:"IBM Plex Mono",ui-monospace,monospace;--body:"Inter",-apple-system,sans-serif;}
+  *{box-sizing:border-box} html,body{margin:0}
+  body{background:var(--bg);color:var(--ink);font-family:var(--body);line-height:1.6;font-size:15px;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:760px;margin:0 auto;padding:40px 24px 60px}
+  .tag{display:inline-block;font-family:var(--mono);font-size:11px;letter-spacing:1px;text-transform:uppercase;color:var(--accent);border:1px solid rgba(31,111,107,.4);background:var(--accent-soft);border-radius:999px;padding:4px 11px;margin-bottom:16px}
+  h1{font-family:var(--head);font-size:30px;letter-spacing:-.5px;margin:0 0 6px}
+  .meta{color:var(--muted);font-family:var(--mono);font-size:12.5px;margin-bottom:28px}
+  h2{font-family:var(--head);font-size:17px;margin:30px 0 10px}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:20px 22px;box-shadow:var(--shadow);margin-bottom:16px}
+  .kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px;margin:18px 0}
+  .kpi{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:14px 16px;box-shadow:var(--shadow)}
+  .kpi .n{font-family:var(--mono);font-size:24px;font-weight:600;letter-spacing:-.5px}
+  .kpi .l{color:var(--muted);font-size:12px;margin-top:4px}
+  table{width:100%;border-collapse:collapse;font-size:13.5px;margin-top:6px}
+  th,td{text-align:left;padding:8px 6px;border-bottom:1px solid var(--line)}
+  th{font-family:var(--head);font-size:12px;color:var(--muted)} td.num{text-align:right;font-family:var(--mono)}
+  .good{color:var(--good)} .mid{color:var(--mid)} .bad{color:var(--bad)}
+  .insight{border-left:3px solid var(--accent);padding:4px 0 4px 16px;margin:14px 0;color:var(--ink)}
+  .src{color:var(--muted);font-size:12px;margin-top:8px}
+  a{color:var(--accent)}
+  footer{border-top:1px solid var(--line);margin-top:34px;padding-top:18px;color:var(--muted);font-size:12.5px}
+  .disc{color:var(--dim);font-size:11.5px;margin-top:14px;line-height:1.6}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <span class="tag">Sample · Illustrative of the monthly Pro brief</span>
+  <h1>AV Safety Intelligence — Sample Brief</h1>
+  <div class="meta">Built from public NHTSA Standing General Order &amp; California DMV data · snapshot through May 2026</div>
+
+  <div class="kpis">
+    <div class="kpi"><div class="n">1,115</div><div class="l">ADS crash reports (Apr 2025–May 2026)</div></div>
+    <div class="kpi"><div class="n">15</div><div class="l">Reporting operators</div></div>
+    <div class="kpi"><div class="n">1</div><div class="l">Fatality alleged in window</div></div>
+    <div class="kpi"><div class="n">82%</div><div class="l">Property-damage-only, no injury</div></div>
+  </div>
+
+  <h2>This month's read</h2>
+  <p class="insight">Reporting stays concentrated: <strong>Waymo accounts for ~82% of all ADS crash reports</strong> (918 of 1,115) — but that reflects fleet size and reporting diligence, not relative risk. The signal worth watching is the <strong>severity mix</strong>: 82% are property-damage-only and just one fatality is alleged across the 13-month window.</p>
+
+  <h2>Who is reporting (top operators)</h2>
+  <div class="card">
+    <table>
+      <thead><tr><th>Operator</th><th class="num">Reports</th></tr></thead>
+      <tbody>
+        <tr><td>Waymo</td><td class="num">918</td></tr>
+        <tr><td>Avride</td><td class="num">65</td></tr>
+        <tr><td>Zoox</td><td class="num">48</td></tr>
+        <tr><td>Tesla</td><td class="num">38</td></tr>
+        <tr><td>May Mobility</td><td class="num">15</td></tr>
+      </tbody>
+    </table>
+    <div class="src">Source: NHTSA SGO 2021-01 (ADS incident reports).</div>
+  </div>
+
+  <h2>California disengagement leaders (2025, per 1,000 autonomous miles)</h2>
+  <div class="card">
+    <table>
+      <thead><tr><th>Operator</th><th class="num">Auto. miles</th><th class="num">Per 1,000 mi</th></tr></thead>
+      <tbody>
+        <tr><td>Zoox</td><td class="num">1,526,295</td><td class="num good">0.013</td></tr>
+        <tr><td>Waymo</td><td class="num">7,224,708</td><td class="num good">0.032</td></tr>
+        <tr><td>Nuro</td><td class="num">158,104</td><td class="num mid">1.54</td></tr>
+        <tr><td>May Mobility</td><td class="num">39,670</td><td class="num bad">9.28</td></tr>
+      </tbody>
+    </table>
+    <div class="src">Source: California DMV Autonomous Vehicle Disengagement &amp; Mileage Reports, 2025.</div>
+  </div>
+  <p class="insight">Disengagement rate is the most-cited reliability proxy — and it scales inversely with fleet maturity: the two largest fleets (Waymo, Zoox) post the <strong>lowest</strong> rates, while small-fleet operators run 50–700× higher. The full Pro brief normalizes these against fleet activity and flags month-over-month movement.</p>
+
+  <h2>What the full monthly brief adds</h2>
+  <div class="card">
+    <ul style="margin:0;padding-left:18px;color:var(--muted);line-height:1.9">
+      <li>Normalized trends (incidents indexed to reported activity, not raw counts)</li>
+      <li>New-entrant &amp; anomaly alerts — first appearances and unusual month-over-month jumps</li>
+      <li>Severity &amp; crash-type shifts, with the clean dataset for your own analysis</li>
+    </ul>
+  </div>
+
+  <footer>
+    Prepared by <strong>Neel Shah</strong> · <a href="https://linkedin.com/in/neelshah29" target="_blank" rel="noopener">linkedin.com/in/neelshah29</a> · <a href="./">AV Safety Tracker</a>
+    <div class="disc">This is an illustrative sample built from public data. Reporting practices differ by operator, so raw counts are not a safety ranking. Reference only — verify against the official NHTSA and California DMV sources before any decision.</div>
+  </footer>
+</div>
+</body>
+</html>

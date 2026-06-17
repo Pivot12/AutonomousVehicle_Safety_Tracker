@@ -1,0 +1,13 @@
+node_modules/
+.env
+.vercel
+.DS_Store
+
+# Raw Cal DMV archive — LOCAL ONLY, never commit (1.4GB+, exceeds GitHub limits).
+# Only the small processed output in public/data/ should be committed.
+data/caldmv/*.zip
+data/caldmv/dmvpublicaffairs_*/
+data/caldmv/**/*.pdf
+data/caldmv/**/*.xlsx
+data/caldmv/**/*.csv
+data/caldmv/**/*.docx

@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>AV Safety Intelligence — Monthly Brief</title>
+<meta name="description" content="The monthly intelligence layer on top of NHTSA AV crash data: normalized trends, what changed and why it matters, plus the clean dataset." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Mono:wght@500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#F7F7F4;--panel:#FFFFFF;--panel2:#FBFBF9;--line:#E8E8E2;--line2:#DEDED7;
+    --ink:#15171C;--muted:#66707B;--dim:#98A0AA;
+    --accent:#1F6F6B;--accent-soft:rgba(31,111,107,.08);
+    --sand:#C9A24B;--clay:#B5634B;--sage:#6E8F6B;
+    --shadow:0 1px 2px rgba(20,20,20,.04), 0 10px 30px rgba(20,20,20,.05);
+    --head:"Space Grotesk",system-ui,sans-serif;
+    --mono:"IBM Plex Mono",ui-monospace,monospace;
+    --body:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0}
+  body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:15px;line-height:1.55;-webkit-font-smoothing:antialiased}
+
+  .bg-layer{position:absolute;inset:0;z-index:-1;overflow:hidden;pointer-events:none}
+  .bg-layer svg{position:absolute;inset:0;width:100%;height:100%}
+
+  .wrap{position:relative;max-width:960px;margin:0 auto;padding:40px 24px 48px}
+  .top{display:flex;align-items:center;gap:14px;margin-bottom:40px;flex-wrap:wrap}
+  .logo{width:40px;height:40px;flex:0 0 auto}
+  .brandname{font-family:var(--head);font-weight:700;font-size:17px;color:var(--ink)}
+  .brandsub{color:var(--muted);font-size:12px;font-family:var(--mono)}
+  a.back{margin-left:auto;color:var(--accent);font-size:13px;text-decoration:none;font-family:var(--mono)}
+  a.back:hover{text-decoration:underline}
+
+  h1{font-family:var(--head);font-size:36px;line-height:1.12;margin:0 0 16px;letter-spacing:-.8px;color:var(--ink)}
+  .lede{color:var(--muted);font-size:17px;line-height:1.7;max-width:680px}
+
+  .section{margin-top:42px}
+  .grid2{display:grid;grid-template-columns:1.1fr .9fr;gap:24px}
+  @media(max-width:760px){.grid2{grid-template-columns:1fr}}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:24px;box-shadow:var(--shadow)}
+  h2{font-family:var(--head);font-size:20px;margin:0 0 16px;color:var(--ink);letter-spacing:-.3px}
+
+  ul.feat{list-style:none;padding:0;margin:0}
+  ul.feat li{padding:11px 0 11px 28px;position:relative;font-size:14.5px;line-height:1.55;border-bottom:1px solid var(--line);color:var(--ink)}
+  ul.feat li:last-child{border-bottom:none}
+  ul.feat li:before{content:"✓";position:absolute;left:0;color:var(--accent);font-weight:700;font-family:var(--mono)}
+
+  .brief{position:relative;overflow:hidden}
+  .brief h3{font-family:var(--head);font-size:16px;margin:0 0 6px;color:var(--ink)}
+  .brief .meta{color:var(--muted);font-size:12px;margin-bottom:16px;font-family:var(--mono)}
+  .insight{font-size:14.5px;line-height:1.65;margin:0 0 12px;color:var(--ink)}
+  .locked{position:relative}
+  .locked .blur{filter:blur(6px);user-select:none;pointer-events:none;opacity:.7}
+  .lockbar{position:absolute;inset:auto 0 0 0;top:40%;display:flex;flex-direction:column;align-items:center;gap:10px;background:linear-gradient(180deg,transparent,var(--panel) 55%);padding-top:40px}
+  .lock-pill{border:1px solid var(--accent);color:var(--accent);background:var(--accent-soft);border-radius:999px;padding:7px 15px;font-size:13px;font-family:var(--mono)}
+
+  /* ===== BIG FREE SAMPLE CTA ===== */
+  .freecta{margin-top:42px;background:var(--panel);border:1px solid var(--accent);border-radius:18px;padding:32px;position:relative;overflow:hidden;box-shadow:var(--shadow)}
+  .freecta:before{content:"";position:absolute;right:-60px;top:-60px;width:200px;height:200px;border-radius:50%;border:1px solid rgba(31,111,107,.18)}
+  .freecta:after{content:"";position:absolute;right:-20px;top:-20px;width:120px;height:120px;border-radius:50%;border:1px solid rgba(31,111,107,.12)}
+  .freecta .tag{display:inline-block;font-family:var(--mono);font-size:11px;letter-spacing:1px;text-transform:uppercase;color:var(--accent);border:1px solid rgba(31,111,107,.4);background:var(--accent-soft);border-radius:999px;padding:5px 12px;margin-bottom:14px}
+  .freecta h2{font-size:26px;margin:0 0 10px;position:relative}
+  .freecta p.sub{color:var(--muted);font-size:15px;margin:0 0 22px;max-width:560px;position:relative;line-height:1.6}
+  .sampleform{display:flex;flex-wrap:wrap;gap:12px;align-items:flex-end;position:relative}
+  .fld{display:flex;flex-direction:column;gap:7px;flex:1;min-width:170px}
+  .fld label{font-size:12px;color:var(--muted);font-family:var(--mono)}
+  .fld input{font-family:var(--body);font-size:15px;background:var(--panel2);color:var(--ink);border:1px solid var(--line2);border-radius:11px;padding:13px 14px;width:100%}
+  .fld input:focus{outline:2px solid var(--accent);outline-offset:1px;border-color:var(--accent)}
+  .bigbtn{font-family:var(--head);font-weight:700;font-size:15px;background:var(--accent);color:#fff;border:none;border-radius:12px;padding:14px 24px;cursor:pointer;white-space:nowrap;height:50px;transition:.15s;box-shadow:var(--shadow)}
+  .bigbtn:hover{background:#185a56}
+  .bigbtn:focus-visible{outline:2px solid var(--sand);outline-offset:2px}
+  .formmsg{margin-top:16px;font-size:14px;font-family:var(--mono);min-height:18px;position:relative}
+  .formmsg.ok{color:var(--accent)}
+
+  /* pricing */
+  .tiers{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:20px}
+  @media(max-width:760px){.tiers{grid-template-columns:1fr}}
+  .tier{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:24px;display:flex;flex-direction:column;box-shadow:var(--shadow)}
+  .tier.pop{border-color:var(--accent);box-shadow:0 1px 2px rgba(20,20,20,.04), 0 14px 40px rgba(31,111,107,.14)}
+  .tier .name{font-family:var(--mono);font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:.8px}
+  .tier .price{font-family:var(--mono);font-size:32px;font-weight:600;margin:10px 0;color:var(--ink)}
+  .tier .price span{font-size:14px;color:var(--muted);font-weight:400}
+  .tier ul{list-style:none;padding:0;margin:10px 0 20px;font-size:13.5px;color:var(--muted);line-height:1.75;flex:1}
+  .btn{display:block;text-align:center;background:var(--accent);color:#fff;text-decoration:none;padding:13px;border-radius:11px;font-weight:600;font-family:var(--head);transition:.15s}
+  .btn:hover{background:#185a56}
+  .btn.ghost{background:transparent;border:1px solid var(--line2);color:var(--ink)}
+  .btn.ghost:hover{background:var(--panel2);border-color:var(--dim)}
+  .btn:focus-visible{outline:2px solid var(--sand);outline-offset:2px}
+
+  /* contact */
+  .contactgrid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  @media(max-width:560px){.contactgrid{grid-template-columns:1fr}}
+  .contactform .fld{min-width:0}
+  textarea{font-family:var(--body);font-size:15px;background:var(--panel2);color:var(--ink);border:1px solid var(--line2);border-radius:11px;padding:13px 14px;width:100%;resize:vertical;min-height:110px}
+  textarea:focus{outline:2px solid var(--accent);outline-offset:1px;border-color:var(--accent)}
+
+  .note{color:var(--dim);font-size:12.5px;margin-top:30px;line-height:1.65}
+
+  footer{border-top:1px solid var(--line);padding:26px;text-align:center;color:var(--muted);font-size:12.5px;margin-top:46px;background:var(--panel)}
+  footer a{color:var(--muted);margin:0 8px}
+  footer a:hover{color:var(--accent)}
+
+  /* persistent attribution badge */
+  .attrib{position:fixed;right:14px;bottom:14px;z-index:50;display:inline-flex;align-items:center;gap:6px;background:var(--accent);color:#fff;text-decoration:none;font-family:var(--mono);font-size:11px;font-weight:500;padding:5px 11px;border-radius:999px;box-shadow:0 2px 10px rgba(31,111,107,.28);opacity:.9;transition:.15s}
+  .attrib:hover{opacity:1;color:#fff}
+  .attrib svg{width:12px;height:12px;flex:0 0 auto}
+  @media(max-width:480px){.attrib{display:none}}
+
+  @media(max-width:760px){h1{font-size:28px}.lede{font-size:15.5px}body{font-size:14px}}
+</style>
+</head>
+<body>
+<div class="bg-layer" aria-hidden="true">
+  <svg viewBox="0 0 1200 800" preserveAspectRatio="xMidYMid slice">
+    <defs>
+      <pattern id="grid" width="44" height="44" patternUnits="userSpaceOnUse">
+        <path d="M44 0 L0 0 0 44" fill="none" stroke="#15171C" stroke-width="1"/>
+      </pattern>
+      <radialGradient id="glow" cx="84%" cy="0%" r="60%">
+        <stop offset="0%" stop-color="#1F6F6B" stop-opacity="0.05"/>
+        <stop offset="100%" stop-color="#1F6F6B" stop-opacity="0"/>
+      </radialGradient>
+    </defs>
+    <rect width="1200" height="800" fill="url(#grid)" opacity="0.04"/>
+    <rect width="1200" height="800" fill="url(#glow)"/>
+    <g stroke="#1F6F6B" fill="none" opacity="0.05">
+      <circle cx="1010" cy="120" r="120"/>
+      <circle cx="1010" cy="120" r="220"/>
+      <circle cx="1010" cy="120" r="320"/>
+      <line x1="1010" y1="120" x2="1440" y2="120"/>
+      <line x1="1010" y1="120" x2="1010" y2="550"/>
+    </g>
+  </svg>
+</div>
+
+<div class="wrap">
+  <div class="top">
+    <svg class="logo" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="AV Safety Tracker logo">
+      <defs>
+        <linearGradient id="lgShield" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#27817C"/>
+          <stop offset="1" stop-color="#1A615D"/>
+        </linearGradient>
+      </defs>
+      <path d="M24 4 L40 9.6 V23.2 C40 33.4 32.9 40.9 24 44 C15.1 40.9 8 33.4 8 23.2 V9.6 Z" fill="url(#lgShield)"/>
+      <circle cx="24" cy="22.5" r="10.5" fill="none" stroke="#FFFFFF" stroke-width="1.5" opacity=".32"/>
+      <circle cx="24" cy="22.5" r="6" fill="none" stroke="#FFFFFF" stroke-width="1.5" opacity=".55"/>
+      <path d="M24 22.5 L33.4 15.4" stroke="#FFFFFF" stroke-width="1.8" stroke-linecap="round"/>
+      <circle cx="24" cy="22.5" r="2.6" fill="#FFFFFF"/>
+      <circle cx="33.4" cy="15.4" r="2.1" fill="#C9A24B"/>
+    </svg>
+    <div>
+      <div class="brandname">AV Safety Intelligence</div>
+      <div class="brandsub">The monthly brief on top of NHTSA AV crash data</div>
+    </div>
+    <a class="back" href="index.html">← back to the live dashboard</a>
+  </div>
+
+  <h1>The data is public. Insight isn't.</h1>
+  <p class="lede">The free dashboard shows you <em>what</em> got reported. The monthly brief tells you <em>what changed and why it matters</em> — normalized trends, new entrants, severity shifts, and the clean dataset, delivered to your inbox so you don't have to parse a federal CSV.</p>
+
+  <div class="section grid2">
+    <div class="card">
+      <h2>What a subscriber gets</h2>
+      <ul class="feat">
+        <li><strong>Monthly Intelligence Brief</strong> — 2-page PDF: the month's movements, called out and explained.</li>
+        <li><strong>Normalized trends</strong> — incidents indexed to reported fleet activity, not just raw counts (raw counts mislead).</li>
+        <li><strong>Severity &amp; crash-type analysis</strong> — where injuries are concentrating and how that's shifting.</li>
+        <li><strong>New-entrant &amp; anomaly alerts</strong> — first time a company appears, or an unusual month-over-month jump.</li>
+        <li><strong>The clean dataset</strong> — normalized CSV/JSON download, ready for your own analysis.</li>
+        <li><strong>California DMV disengagement view</strong> — disengagements per 1,000 autonomous miles, by company (added with annual DMV data).</li>
+      </ul>
+    </div>
+
+    <div class="card brief">
+      <h3>Sample — March 2026 brief (excerpt)</h3>
+      <div class="meta">Generated from NHTSA SGO 2021-01 · for illustration</div>
+      <p class="insight"><strong>Headline:</strong> Reported ADS incidents rose this month, but the rise is concentrated in two reporters expanding driverless operations — not a sector-wide safety regression.</p>
+      <div class="locked">
+        <div class="blur">
+          <p class="insight"><strong>Normalized read:</strong> On a per-operational-area basis, the incident rate for the top reporter actually declined ~11% vs. its trailing 3-month average, even as its absolute count rose — consistent with fleet expansion outpacing incident growth. The second reporter shows the inverse pattern and is the one to watch.</p>
+          <p class="insight"><strong>Severity:</strong> Minor-injury share fell while property-damage-only rose, suggesting lower-speed urban contact events dominate the new volume. No fatal allegations added this month.</p>
+          <p class="insight"><strong>Watch item:</strong> A new reporting entity appeared for the first time — early operations, small sample, flagged for next month.</p>
+        </div>
+        <div class="lockbar">
+          <div class="lock-pill">🔒 Full brief + dataset for subscribers</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== BIG FREE SAMPLE CTA ===== -->
+  <div class="freecta">
+    <span class="tag">Free · no card required</span>
+    <h2>Get one free sample brief</h2>
+    <p class="sub">See exactly what lands in your inbox before you decide. Drop your name and email and we'll send the most recent sample brief — the full normalized read, not the blurred teaser.</p>
+    <form class="sampleform" id="sampleForm" novalidate>
+      <div class="fld">
+        <label for="sName">Name</label>
+        <input type="text" id="sName" name="name" autocomplete="name" placeholder="Jane Researcher" />
+      </div>
+      <div class="fld">
+        <label for="sEmail">Email</label>
+        <input type="email" id="sEmail" name="email" autocomplete="email" required placeholder="jane@company.com" />
+      </div>
+      <button class="bigbtn" type="submit">Send me the sample →</button>
+    </form>
+    <div class="formmsg" id="sampleMsg" aria-live="polite"></div>
+  </div>
+
+  <div class="section">
+    <h2>Simple pricing</h2>
+    <div class="tiers">
+      <div class="tier">
+        <div class="name">Free</div>
+        <div class="price">$0</div>
+        <ul><li>The live dashboard</li><li>Counts, charts, recent reports</li><li>Always current</li></ul>
+        <a class="btn ghost" href="index.html">Open dashboard</a>
+      </div>
+      <div class="tier pop">
+        <div class="name">Pro · Individual</div>
+        <div class="price">$5<span>/month</span></div>
+        <ul><li>Everything in Free</li><li>Monthly Intelligence Brief</li><li>Normalized trends + alerts</li><li>Clean dataset download</li></ul>
+        <!-- TODO: replace href with your Stripe Payment Link (stripe.com → Payment Links → recurring $5/mo). No code needed. -->
+        <a class="btn" href="https://buy.stripe.com/7sY5kD2L991Geax7ON6Zy01" target="_blank" rel="noopener">Subscribe — $5/mo</a>
+      </div>
+      <div class="tier">
+        <div class="name">Team</div>
+        <div class="price">Let's talk</div>
+        <ul><li>Everything in Pro</li><li>API / bulk dataset access</li><li>Custom cuts for your fleet/region</li><li>Seats for your team</li></ul>
+        <a class="btn ghost" href="#contact">Contact</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== CONTACT FORM ===== -->
+  <div class="section" id="contact">
+    <h2>Questions? Get in touch</h2>
+    <div class="card">
+      <form class="contactform" id="contactForm" novalidate>
+        <div class="contactgrid">
+          <div class="fld">
+            <label for="cName">Name</label>
+            <input type="text" id="cName" name="name" autocomplete="name" placeholder="Your name" />
+          </div>
+          <div class="fld">
+            <label for="cEmail">Email</label>
+            <input type="email" id="cEmail" name="email" autocomplete="email" required placeholder="you@company.com" />
+          </div>
+        </div>
+        <div class="fld" style="margin-top:14px">
+          <label for="cMsg">Message</label>
+          <textarea id="cMsg" name="message" placeholder="What would you like to know?"></textarea>
+        </div>
+        <button class="bigbtn" type="submit" style="margin-top:16px">Send message</button>
+        <div class="formmsg" id="contactMsg" aria-live="polite"></div>
+      </form>
+    </div>
+  </div>
+
+  <p class="note">
+    Not ready to subscribe? Use the free-sample form above — first sample is on us.<br><br>
+    Reporting practices differ by company; normalized figures are estimates for analysis, not safety rankings. Built on public NHTSA data.
+  </p>
+</div>
+
+<footer>
+  <div>AV Safety Tracker · built on public NHTSA data</div>
+  <div style="margin-top:8px">
+    <a href="index.html">Dashboard</a>·
+    <a href="privacy.html">Privacy</a>·
+    <a href="#contact">Contact</a>
+  </div>
+  <div style="margin-top:10px;color:var(--dim)">Built by <a href="https://linkedin.com/in/neelshah29" target="_blank" rel="noopener">Neel Shah</a> · linkedin.com/in/neelshah29</div>
+</footer>
+
+<a class="attrib" href="https://linkedin.com/in/neelshah29" target="_blank" rel="noopener" aria-label="Neel Shah on LinkedIn">
+  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9h4v12H3zM10 9h3.8v1.7h.05c.53-1 1.83-2.05 3.77-2.05 4.03 0 4.78 2.65 4.78 6.1V21h-4v-5.4c0-1.3 0-2.95-1.8-2.95s-2.08 1.4-2.08 2.85V21H10z"/></svg>
+  Neel Shah · linkedin.com/in/neelshah29
+</a>
+
+<script>
+/* ===== SHARED CONTRACT ===== */
+const APP_NAME = "AV Safety Tracker";
+const WEBHOOK_URL = "https://script.google.com/macros/s/AKfycbzRzNr62EZgvPfgRS7X9CIo6Fce4SKu9MXoKL9WcoFnnXSsge0quja2EO7sFuIhjGY0/exec";
+const _t0 = Date.now();
+const _ctx = () => ({ app: APP_NAME, ts: new Date().toISOString(), tz: Intl.DateTimeFormat().resolvedOptions().timeZone, lang: navigator.language, ref: document.referrer });
+function _beacon(p){ if(!WEBHOOK_URL||WEBHOOK_URL.startsWith("REPLACE"))return; try{ const b=new Blob([JSON.stringify(p)],{type:"text/plain;charset=utf-8"}); navigator.sendBeacon ? navigator.sendBeacon(WEBHOOK_URL,b) : fetch(WEBHOOK_URL,{method:"POST",headers:{"Content-Type":"text/plain;charset=utf-8"},body:JSON.stringify(p),keepalive:true}); }catch(e){} }
+async function _post(p){ if(!WEBHOOK_URL||WEBHOOK_URL.startsWith("REPLACE"))return; try{ await fetch(WEBHOOK_URL,{method:"POST",headers:{"Content-Type":"text/plain;charset=utf-8"},body:JSON.stringify(p)}); }catch(e){} }
+_beacon({type:"pageview", path:location.pathname, ..._ctx()});
+document.addEventListener("visibilitychange",()=>{ if(document.visibilityState==="hidden"){ _beacon({type:"duration", app:APP_NAME, ts:new Date().toISOString(), seconds:Math.round((Date.now()-_t0)/1000)}); }});
+/* =========================== */
+
+function validEmail(e){ return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e); }
+
+/* free sample mini-form */
+document.getElementById("sampleForm").addEventListener("submit", function(e){
+  e.preventDefault();
+  const name=document.getElementById("sName").value.trim();
+  const email=document.getElementById("sEmail").value.trim();
+  const msg=document.getElementById("sampleMsg");
+  if(!validEmail(email)){ msg.className="formmsg"; msg.style.color="var(--clay)"; msg.textContent="Please enter a valid email so we can send it."; return; }
+  _post({type:"sample", name, email, origin: location.origin, ..._ctx()});
+  this.reset();
+  msg.className="formmsg ok"; msg.style.color=""; msg.textContent="Check your inbox — a sample brief is on its way.";
+});
+
+/* contact form */
+document.getElementById("contactForm").addEventListener("submit", function(e){
+  e.preventDefault();
+  const name=document.getElementById("cName").value.trim();
+  const email=document.getElementById("cEmail").value.trim();
+  const message=document.getElementById("cMsg").value.trim();
+  const msg=document.getElementById("contactMsg");
+  if(!validEmail(email)){ msg.className="formmsg"; msg.style.color="var(--clay)"; msg.textContent="Please enter a valid email so we can reply."; return; }
+  _post({type:"contact", name, email, message, ..._ctx()});
+  this.reset();
+  msg.className="formmsg ok"; msg.style.color=""; msg.textContent="Thanks — your message is in. We'll get back to you by email.";
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,681 @@
+{
+ "meta": {
+  "source": "California DMV Autonomous Vehicle Disengagement & Mileage Reports",
+  "sourceUrl": "https://www.dmv.ca.gov/portal/vehicle-industry-services/autonomous-vehicles/disengagement-reports/",
+  "generated": "2026-06-15T05:44:15.360535Z",
+  "yearsAvailable": [
+   "2021",
+   "2022",
+   "2023",
+   "2024",
+   "2025"
+  ],
+  "note": "Rate = disengagements per 1,000 autonomous miles. Driverless + regular filings combined. Reporting practices differ by company; not a direct safety ranking."
+ },
+ "byYear": {
+  "2021": [
+   {
+    "manufacturer": "APOLLO AUTONOMOUS DRIVING USA LLC",
+    "miles": 9565,
+    "disengagements": 1,
+    "ratePer1kMiles": 0.105
+   },
+   {
+    "manufacturer": "PONY.AI, INC.",
+    "miles": 9043,
+    "disengagements": 22,
+    "ratePer1kMiles": 2.433
+   },
+   {
+    "manufacturer": "CRUISE LLC",
+    "miles": 6366,
+    "disengagements": 21,
+    "ratePer1kMiles": 3.299
+   },
+   {
+    "manufacturer": "INCEPTIO TECHNOLOGY",
+    "miles": 39,
+    "disengagements": 0,
+    "ratePer1kMiles": 0.0
+   },
+   {
+    "manufacturer": "UATC, LLC",
+    "miles": 14,
+    "disengagements": 31,
+    "ratePer1kMiles": 2214.286
+   },
+   {
+    "manufacturer": "NURO, INC",
+    "miles": 9,
+    "disengagements": 23,
+    "ratePer1kMiles": 2555.556
+   },
+   {
+    "manufacturer": "AIMOTIVE INC.",
+    "miles": 0,
+    "disengagements": 106,
+    "ratePer1kMiles": null
+   },
+   {
+    "manufacturer": "APPLE INC.",
+    "miles": 0,
+    "disengagements": 663,
+    "ratePer1kMiles": null
+   },
+   {
+    "manufacturer": "ARGO AI, LLC",
+    "miles": 0,
+    "disengagements": 1,
+    "ratePer1kMiles": null
+   },
+   {
+    "manufacturer": "AURORA OPERATIONS, INC.",
+    "miles": 0,
+    "disengagements": 9,
+    "ratePer1kMiles": null
+   },
+   {
+    "manufacturer": "AUTOX TECHNOLOGIES, INC",
+    "miles": 0,
+    "disengagements": 1,
+    "ratePer1kMiles": null
+   },
+   {
+    "manufacturer": "DEEPROUTE.AI",
+    "miles": 0,
+    "disengagements": 2,
+    "ratePer1kMiles": null
+   },
+   {
+    "manufacturer": "DIDI RESEARCH AMERICA LLC",
+    "miles": 0,
+    "disengagements": 1,
+    "ratePer1kMiles": null
+   },
+   {
+    "manufacturer": "EASYMILE",
+    "miles": 0,
+    "disengagements": 222,
+    "ratePer1kMiles": null
+   },
+   {
+    "manufacturer": "GATIK AI INC.",
+    "miles": 0,
+    "disengagements": 6,
+    "ratePer1kMiles": null
+   },
+   {
+    "manufacturer": "IMAGRY INC.",
+    "miles": 0,
+    "disengagements": 71,
+    "ratePer1kMiles": null
+   },
+   {
+    "manufacturer": "LYFT",
+    "miles": 0,
+    "disengagements": 23,
+    "ratePer1kMiles": null
+   },
+   {
+    "manufacturer": "MERCEDES-BENZ RESEARCH & DEVELOPMENT NORTH AMERICA, INC.",
+    "miles": 0,
+    "disengagements": 272,
+    "ratePer1kMiles": null
+   },
+   {
+    "manufacturer": "NISSAN NORTH AMERICA, INC DBA ALLIANCE INNOVATION LAB",
+    "miles": 0,
+    "disengagements": 17,
+    "ratePer1kMiles": null
+   },
+   {
+    "manufacturer": "NVIDIA",
+    "miles": 0,
+    "disengagements": 82,
+    "ratePer1kMiles": null
+   },
+   {
+    "manufacturer": "QCRAFT INC.",
+    "miles": 0,
+    "disengagements": 5,
+    "ratePer1kMiles": null
+   },
+   {
+    "manufacturer": "QUALCOMM TECHNOLOGIES, INC.",
+    "miles": 0,
+    "disengagements": 143,
+    "ratePer1kMiles": null
+   },
+   {
+    "manufacturer": "TOYOTA RESEARCH INSTITUTE, INC.",
+    "miles": 0,
+    "disengagements": 419,
+    "ratePer1kMiles": null
+   },
+   {
+    "manufacturer": "UDELV, INC.",
+    "miles": 0,
+    "disengagements": 46,
+    "ratePer1kMiles": null
+   },
+   {
+    "manufacturer": "VALEO NORTH AMERICA INC.",
+    "miles": 0,
+    "disengagements": 205,
+    "ratePer1kMiles": null
+   },
+   {
+    "manufacturer": "WAYMO LLC",
+    "miles": 0,
+    "disengagements": 292,
+    "ratePer1kMiles": null
+   },
+   {
+    "manufacturer": "WERIDE CORP",
+    "miles": 0,
+    "disengagements": 3,
+    "ratePer1kMiles": null
+   },
+   {
+    "manufacturer": "ZOOX, INC",
+    "miles": 0,
+    "disengagements": 21,
+    "ratePer1kMiles": null
+   }
+  ],
+  "2022": [
+   {
+    "manufacturer": "WOVEN PLANET NORTH AMERICA, INC.",
+    "miles": 6047,
+    "disengagements": 63,
+    "ratePer1kMiles": 10.418
+   },
+   {
+    "manufacturer": "WERIDE CORP",
+    "miles": 1430,
+    "disengagements": 3,
+    "ratePer1kMiles": 2.098
+   },
+   {
+    "manufacturer": "BOSCH",
+    "miles": 781,
+    "disengagements": 141,
+    "ratePer1kMiles": 180.538
+   },
+   {
+    "manufacturer": "CRUISE LLC",
+    "miles": 0,
+    "disengagements": 9,
+    "ratePer1kMiles": null
+   },
+   {
+    "manufacturer": "NURO, INC",
+    "miles": 0,
+    "disengagements": 15,
+    "ratePer1kMiles": null
+   },
+   {
+    "manufacturer": "WAYMO LLC",
+    "miles": 0,
+    "disengagements": 170,
+    "ratePer1kMiles": null
+   },
+   {
+    "manufacturer": "AIMOTIVE INC.",
+    "miles": 0,
+    "disengagements": 680,
+    "ratePer1kMiles": null
+   },
+   {
+    "manufacturer": "APPLE INC.",
+    "miles": 0,
+    "disengagements": 5982,
+    "ratePer1kMiles": null
+   },
+   {
+    "manufacturer": "ARGO AI, LLC",
+    "miles": 0,
+    "disengagements": 1,
+    "ratePer1kMiles": null
+   },
+   {
+    "manufacturer": "AUTOX TECHNOLOGIES, INC",
+    "miles": 0,
+    "disengagements": 1,
+    "ratePer1kMiles": null
+   },
+   {
+    "manufacturer": "DIDI RESEARCH AMERICA, LLC",
+    "miles": 0,
+    "disengagements": 2,
+    "ratePer1kMiles": null
+   },
+   {
+    "manufacturer": "GATIK AI INC",
+    "miles": 0,
+    "disengagements": 3,
+    "ratePer1kMiles": null
+   },
+   {
+    "manufacturer": "GHOST AUTONOMY INC",
+    "miles": 0,
+    "disengagements": 448,
+    "ratePer1kMiles": null
+   },
+   {
+    "manufacturer": "IMAGRY INC",
+    "miles": 0,
+    "disengagements": 204,
+    "ratePer1kMiles": null
+   },
+   {
+    "manufacturer": "INTEL CORPORATION",
+    "miles": 0,
+    "disengagements": 155,
+    "ratePer1kMiles": null
+   },
+   {
+    "manufacturer": "MERCEDES-BENZ RESEARCH & DEVELOPMENT NORTH AMERICA, INC.",
+    "miles": 0,
+    "disengagements": 38,
+    "ratePer1kMiles": null
+   },
+   {
+    "manufacturer": "MOTIONAL AD, INC.",
+    "miles": 0,
+    "disengagements": 135,
+    "ratePer1kMiles": null
+   },
+   {
+    "manufacturer": "NISSAN NORTH AMERICA, INC DBA ALLIANCE INNOVATION LAB",
+    "miles": 0,
+    "disengagements": 8,
+    "ratePer1kMiles": null
+   },
+   {
+    "manufacturer": "NVIDIA CORPORATION",
+    "miles": 0,
+    "disengagements": 7,
+    "ratePer1kMiles": null
+   },
+   {
+    "manufacturer": "PONY.AI, INC.",
+    "miles": 0,
+    "disengagements": 20,
+    "ratePer1kMiles": null
+   },
+   {
+    "manufacturer": "QCRAFT INC.",
+    "miles": 0,
+    "disengagements": 3,
+    "ratePer1kMiles": null
+   },
+   {
+    "manufacturer": "QUALCOMM TECHNOLOGIES, INC.",
+    "miles": 0,
+    "disengagements": 128,
+    "ratePer1kMiles": null
+   },
+   {
+    "manufacturer": "TOYOTA RESEARCH INSTITUTE",
+    "miles": 0,
+    "disengagements": 112,
+    "ratePer1kMiles": null
+   },
+   {
+    "manufacturer": "VALEO NORTH AMERICA INC.",
+    "miles": 0,
+    "disengagements": 71,
+    "ratePer1kMiles": null
+   },
+   {
+    "manufacturer": "ZOOX INC",
+    "miles": 0,
+    "disengagements": 21,
+    "ratePer1kMiles": null
+   }
+  ],
+  "2023": [
+   {
+    "manufacturer": "PONY.AI, INC.",
+    "miles": 51232,
+    "disengagements": 3,
+    "ratePer1kMiles": 0.059
+   },
+   {
+    "manufacturer": "Vueron Technology USA INC",
+    "miles": 2144,
+    "disengagements": 5,
+    "ratePer1kMiles": 2.332
+   },
+   {
+    "manufacturer": "aiMotive Inc.",
+    "miles": 0,
+    "disengagements": 708,
+    "ratePer1kMiles": null
+   },
+   {
+    "manufacturer": "Apollo",
+    "miles": 0,
+    "disengagements": 3,
+    "ratePer1kMiles": null
+   },
+   {
+    "manufacturer": "APPLE INC.",
+    "miles": 0,
+    "disengagements": 3194,
+    "ratePer1kMiles": null
+   },
+   {
+    "manufacturer": "AURORA OPERATIONS, INC.",
+    "miles": 0,
+    "disengagements": 47,
+    "ratePer1kMiles": null
+   },
+   {
+    "manufacturer": "BOSCH",
+    "miles": 0,
+    "disengagements": 314,
+    "ratePer1kMiles": null
+   },
+   {
+    "manufacturer": "Didi Research America",
+    "miles": 0,
+    "disengagements": 1,
+    "ratePer1kMiles": null
+   },
+   {
+    "manufacturer": "Gatik AI Inc",
+    "miles": 0,
+    "disengagements": 2,
+    "ratePer1kMiles": null
+   },
+   {
+    "manufacturer": "GHOST AUTONOMY INC",
+    "miles": 0,
+    "disengagements": 1034,
+    "ratePer1kMiles": null
+   },
+   {
+    "manufacturer": "IMAGRY INC",
+    "miles": 0,
+    "disengagements": 124,
+    "ratePer1kMiles": null
+   },
+   {
+    "manufacturer": "Motional AD, Inc.",
+    "miles": 0,
+    "disengagements": 593,
+    "ratePer1kMiles": null
+   },
+   {
+    "manufacturer": "Nissan",
+    "miles": 0,
+    "disengagements": 17,
+    "ratePer1kMiles": null
+   },
+   {
+    "manufacturer": "Nuro Inc",
+    "miles": 0,
+    "disengagements": 47,
+    "ratePer1kMiles": null
+   },
+   {
+    "manufacturer": "QUALCOMM TECHNOLOGIES, INC.",
+    "miles": 0,
+    "disengagements": 197,
+    "ratePer1kMiles": null
+   },
+   {
+    "manufacturer": "Valeo North America",
+    "miles": 0,
+    "disengagements": 21,
+    "ratePer1kMiles": null
+   },
+   {
+    "manufacturer": "Waymo LLC",
+    "miles": 0,
+    "disengagements": 226,
+    "ratePer1kMiles": null
+   },
+   {
+    "manufacturer": "WERIDE CORP",
+    "miles": 0,
+    "disengagements": 2,
+    "ratePer1kMiles": null
+   },
+   {
+    "manufacturer": "Woven by Toyota, U.S., Inc.",
+    "miles": 0,
+    "disengagements": 42,
+    "ratePer1kMiles": null
+   },
+   {
+    "manufacturer": "Zoox, Inc",
+    "miles": 0,
+    "disengagements": 4,
+    "ratePer1kMiles": null
+   }
+  ],
+  "2024": [
+   {
+    "manufacturer": "Beep, Inc.",
+    "miles": 17066,
+    "disengagements": 9159,
+    "ratePer1kMiles": 536.681
+   },
+   {
+    "manufacturer": "May Mobility",
+    "miles": 13660,
+    "disengagements": 20694,
+    "ratePer1kMiles": 1514.934
+   },
+   {
+    "manufacturer": "aiMotive Inc.",
+    "miles": 0,
+    "disengagements": 188,
+    "ratePer1kMiles": null
+   },
+   {
+    "manufacturer": "Apple Inc.",
+    "miles": 0,
+    "disengagements": 285,
+    "ratePer1kMiles": null
+   },
+   {
+    "manufacturer": "BOSCH",
+    "miles": 0,
+    "disengagements": 77,
+    "ratePer1kMiles": null
+   },
+   {
+    "manufacturer": "Cruise LLC",
+    "miles": 0,
+    "disengagements": 1,
+    "ratePer1kMiles": null
+   },
+   {
+    "manufacturer": "Gatik AI, Inc.",
+    "miles": 0,
+    "disengagements": 1,
+    "ratePer1kMiles": null
+   },
+   {
+    "manufacturer": "Ghost Autonomy Inc.",
+    "miles": 0,
+    "disengagements": 351,
+    "ratePer1kMiles": null
+   },
+   {
+    "manufacturer": "IMAGRY",
+    "miles": 0,
+    "disengagements": 136,
+    "ratePer1kMiles": null
+   },
+   {
+    "manufacturer": "MERCEDES-BENZ RESEARCH & DEVELOPMENT NORTH AMERICA, INC.",
+    "miles": 0,
+    "disengagements": 4,
+    "ratePer1kMiles": null
+   },
+   {
+    "manufacturer": "Motional AD Inc.",
+    "miles": 0,
+    "disengagements": 320,
+    "ratePer1kMiles": null
+   },
+   {
+    "manufacturer": "Nissan North America. INC DBA NATC-SV",
+    "miles": 0,
+    "disengagements": 11,
+    "ratePer1kMiles": null
+   },
+   {
+    "manufacturer": "NURO, INC.",
+    "miles": 0,
+    "disengagements": 103,
+    "ratePer1kMiles": null
+   },
+   {
+    "manufacturer": "PONY.AI, INC.",
+    "miles": 0,
+    "disengagements": 3,
+    "ratePer1kMiles": null
+   },
+   {
+    "manufacturer": "Valeo North America Inc.",
+    "miles": 0,
+    "disengagements": 12,
+    "ratePer1kMiles": null
+   },
+   {
+    "manufacturer": "Waymo LLC",
+    "miles": 0,
+    "disengagements": 266,
+    "ratePer1kMiles": null
+   },
+   {
+    "manufacturer": "Weride Corp",
+    "miles": 0,
+    "disengagements": 3,
+    "ratePer1kMiles": null
+   },
+   {
+    "manufacturer": "Zoox, Inc.",
+    "miles": 0,
+    "disengagements": 34,
+    "ratePer1kMiles": null
+   }
+  ],
+  "2025": [
+   {
+    "manufacturer": "Waymo LLC",
+    "miles": 7224708,
+    "disengagements": 228,
+    "ratePer1kMiles": 0.032
+   },
+   {
+    "manufacturer": "Zoox, Inc",
+    "miles": 1526295,
+    "disengagements": 20,
+    "ratePer1kMiles": 0.013
+   },
+   {
+    "manufacturer": "Nuro, Inc.",
+    "miles": 158104,
+    "disengagements": 244,
+    "ratePer1kMiles": 1.543
+   },
+   {
+    "manufacturer": "Pony.ai Inc.",
+    "miles": 53243,
+    "disengagements": 3,
+    "ratePer1kMiles": 0.056
+   },
+   {
+    "manufacturer": "Weride Corp",
+    "miles": 41151,
+    "disengagements": 13,
+    "ratePer1kMiles": 0.316
+   },
+   {
+    "manufacturer": "May Mobility",
+    "miles": 39670,
+    "disengagements": 368,
+    "ratePer1kMiles": 9.277
+   },
+   {
+    "manufacturer": "MERCEDES-BENZ RESEARCH & DEVELOPMENT NORTH AMERICA, INC.",
+    "miles": 9703,
+    "disengagements": 24,
+    "ratePer1kMiles": 2.473
+   },
+   {
+    "manufacturer": "Tensor Auto Inc.",
+    "miles": 7608,
+    "disengagements": 1,
+    "ratePer1kMiles": 0.131
+   },
+   {
+    "manufacturer": "aiMotive Inc.",
+    "miles": 6111,
+    "disengagements": 340,
+    "ratePer1kMiles": 55.637
+   },
+   {
+    "manufacturer": "Beep Inc",
+    "miles": 5916,
+    "disengagements": 7867,
+    "ratePer1kMiles": 1329.784
+   },
+   {
+    "manufacturer": "Nullmax",
+    "miles": 1670,
+    "disengagements": 1,
+    "ratePer1kMiles": 0.599
+   },
+   {
+    "manufacturer": "IMAGRY",
+    "miles": 1135,
+    "disengagements": 173,
+    "ratePer1kMiles": 152.423
+   },
+   {
+    "manufacturer": "QUALCOMM TECHNOLOGIES, INC.",
+    "miles": 546,
+    "disengagements": 32,
+    "ratePer1kMiles": 58.608
+   },
+   {
+    "manufacturer": "Nissan North America",
+    "miles": 286,
+    "disengagements": 29,
+    "ratePer1kMiles": 101.399
+   },
+   {
+    "manufacturer": "Gatik AI Inc.",
+    "miles": 208,
+    "disengagements": 1,
+    "ratePer1kMiles": 4.808
+   },
+   {
+    "manufacturer": "Vueron Technology USA Inc",
+    "miles": 45,
+    "disengagements": 0,
+    "ratePer1kMiles": 0.0
+   },
+   {
+    "manufacturer": "Valeo North America Inc.",
+    "miles": 6,
+    "disengagements": 2,
+    "ratePer1kMiles": 333.333
+   },
+   {
+    "manufacturer": "Apollo Autonomous Driving USA LLC",
+    "miles": 3,
+    "disengagements": 0,
+    "ratePer1kMiles": 0.0
+   }
+  ]
+ }
+}
