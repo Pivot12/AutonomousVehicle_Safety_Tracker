@@ -11,3 +11,12 @@ data/caldmv/**/*.pdf
 data/caldmv/**/*.xlsx
 data/caldmv/**/*.csv
 data/caldmv/**/*.docx
+
+# Raw denominator source files — LOCAL ONLY, never commit (PDFs + ZIPs, large binary blobs).
+data/denominators/**/*.pdf
+data/denominators/**/*.zip
+data/denominators/**
+data/NHSTA/**
+data/OL316 CCRS/**
+data/fars/**
+data/vmt/**

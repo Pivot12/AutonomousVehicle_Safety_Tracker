@@ -351,7 +351,7 @@
 <script>
 /* ===== SHARED CONTRACT ===== */
 const APP_NAME = "AV Safety Tracker";
-const WEBHOOK_URL = "REPLACE_WITH_APPS_SCRIPT_URL";
+const WEBHOOK_URL = "https://script.google.com/macros/s/AKfycbzRzNr62EZgvPfgRS7X9CIo6Fce4SKu9MXoKL9WcoFnnXSsge0quja2EO7sFuIhjGY0/exec";
 const _t0 = Date.now();
 const _ctx = () => ({ app: APP_NAME, ts: new Date().toISOString(), tz: Intl.DateTimeFormat().resolvedOptions().timeZone, lang: navigator.language, ref: document.referrer });
 function _beacon(p){ if(!WEBHOOK_URL||WEBHOOK_URL.startsWith("REPLACE"))return; try{ const b=new Blob([JSON.stringify(p)],{type:"text/plain;charset=utf-8"}); navigator.sendBeacon ? navigator.sendBeacon(WEBHOOK_URL,b) : fetch(WEBHOOK_URL,{method:"POST",headers:{"Content-Type":"text/plain;charset=utf-8"},body:JSON.stringify(p),keepalive:true}); }catch(e){} }
