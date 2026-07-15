@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://autonomous-vehicle-safety-tracker.vercel.app/sitemap.xml
