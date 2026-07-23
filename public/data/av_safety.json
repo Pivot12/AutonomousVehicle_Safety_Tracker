@@ -2,7 +2,7 @@
   "meta": {
     "source": "NHTSA Standing General Order 2021-01 (ADS crash reports)",
     "sourceUrl": "https://static.nhtsa.gov/odi/ffdd/sgo-2021-01/SGO-2021-01_Incident_Reports_ADS.csv",
-    "fetchedAt": "2026-07-22T11:41:40.037Z",
+    "fetchedAt": "2026-07-23T11:45:22.496Z",
     "totalIncidents": 1239,
     "dateRange": "2025-04 to 2026-06"
   },
