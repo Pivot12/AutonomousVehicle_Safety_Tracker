@@ -142,7 +142,10 @@
   }
 
   @media print{
-    @page{margin:14mm}
+    @page{size:A4 landscape;margin:10mm}
+    .tablescroll,.chartbox,.panel,main,section,div{overflow:visible !important;max-height:none !important}
+    table{width:100% !important;table-layout:auto;font-size:10.5px !important}
+    thead{display:table-header-group}tr,img,svg{break-inside:avoid;page-break-inside:avoid}
     body{background:#fff !important;font-size:12px}
     .bg-layer,header,.tabs,.toolbar,.strip,.attrib,.reset,.topcta,
     .exportpdf,.filternote,#exportPdf{display:none !important}
@@ -327,7 +330,7 @@
 <footer>
   <div>AV Safety Tracker · built on public NHTSA &amp; California DMV data</div>
   <div style="margin-top:8px">
-    <a href="pro.html">Monthly brief</a>·
+    <a href="pro.html">The brief</a>·
     <a href="privacy.html">Privacy</a>·
     <a href="pro.html#contact">Contact</a>
   </div>
