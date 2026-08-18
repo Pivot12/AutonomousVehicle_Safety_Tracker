@@ -2,9 +2,9 @@
   "meta": {
     "source": "NHTSA Standing General Order 2021-01 (ADS crash reports)",
     "sourceUrl": "https://static.nhtsa.gov/odi/ffdd/sgo-2021-01/SGO-2021-01_Incident_Reports_ADS.csv",
-    "fetchedAt": "2026-08-17T10:21:37.958Z",
-    "totalIncidents": 1239,
-    "dateRange": "2025-04 to 2026-06"
+    "fetchedAt": "2026-08-18T10:17:24.815Z",
+    "totalIncidents": 1365,
+    "dateRange": "2025-04 to 2026-07"
   },
   "byMonth": [
     {
@@ -57,29 +57,33 @@
     },
     {
       "month": "2026-05",
-      "count": 116
+      "count": 118
     },
     {
       "month": "2026-06",
-      "count": 18
+      "count": 128
+    },
+    {
+      "month": "2026-07",
+      "count": 14
     }
   ],
   "byEntity": [
     {
       "name": "Waymo LLC",
-      "count": 1021
+      "count": 1125
     },
     {
       "name": "Avride Inc.",
-      "count": 73
+      "count": 82
     },
     {
       "name": "Zoox, Inc.",
-      "count": 54
+      "count": 62
     },
     {
       "name": "Tesla, Inc.",
-      "count": 42
+      "count": 44
     },
     {
       "name": "May Mobility",
@@ -87,11 +91,11 @@
     },
     {
       "name": "Motional",
-      "count": 10
+      "count": 11
     },
     {
       "name": "Aurora Operations, Inc.",
-      "count": 5
+      "count": 6
     },
     {
       "name": "Nuro",
@@ -110,6 +114,10 @@
       "count": 2
     },
     {
+      "name": "Gatik AI Inc.",
+      "count": 1
+    },
+    {
       "name": "PlusAI Inc",
       "count": 1
     },
@@ -120,32 +128,28 @@
     {
       "name": "Ohmio, Inc.",
       "count": 1
-    },
-    {
-      "name": "Oxbotica",
-      "count": 1
     }
   ],
   "bySeverity": [
     {
       "name": "Property Damage. No Injured Reported",
-      "count": 1024
+      "count": 1134
     },
     {
       "name": "Minor W/O Hospitalization",
-      "count": 81
+      "count": 84
     },
     {
       "name": "No Injured Reported",
-      "count": 70
+      "count": 73
     },
     {
       "name": "Minor W/ Hospitalization",
-      "count": 34
+      "count": 37
     },
     {
       "name": "Unknown",
-      "count": 19
+      "count": 23
     },
     {
       "name": "Moderate W/ Hospitalization",
@@ -153,7 +157,11 @@
     },
     {
       "name": "Moderate W/O Hospitalization",
-      "count": 3
+      "count": 5
+    },
+    {
+      "name": "Serious W/ Hospitalization",
+      "count": 1
     },
     {
       "name": "Fatality",
@@ -163,39 +171,43 @@
   "byState": [
     {
       "name": "CA",
-      "count": 658
+      "count": 720
     },
     {
       "name": "TX",
-      "count": 266
+      "count": 294
     },
     {
       "name": "AZ",
-      "count": 170
+      "count": 186
     },
     {
       "name": "GA",
-      "count": 62
+      "count": 67
     },
     {
       "name": "NV",
-      "count": 34
+      "count": 39
     },
     {
       "name": "FL",
-      "count": 28
+      "count": 35
+    },
+    {
+      "name": "DC",
+      "count": 6
     },
     {
       "name": "TN",
       "count": 6
     },
     {
-      "name": "DC",
-      "count": 5
-    },
-    {
       "name": "PA",
       "count": 4
+    },
+    {
+      "name": "CO",
+      "count": 2
     },
     {
       "name": "MN",
@@ -206,15 +218,1255 @@
       "count": 2
     },
     {
-      "name": "NM",
+      "name": "AR",
       "count": 1
     },
     {
-      "name": "CO",
+      "name": "NM",
       "count": 1
     }
   ],
   "recent": [
+    {
+      "date": "JUL-2026",
+      "ym": "2026-07",
+      "entity": "Waymo LLC",
+      "make": "JAGUAR",
+      "model": "I-PACE",
+      "state": "CA",
+      "severity": "Property Damage. No Injured Reported",
+      "crashWith": "Other, see Narrative"
+    },
+    {
+      "date": "JUL-2026",
+      "ym": "2026-07",
+      "entity": "Waymo LLC",
+      "make": "JAGUAR",
+      "model": "I-PACE",
+      "state": "CA",
+      "severity": "Property Damage. No Injured Reported",
+      "crashWith": "Heavy Truck"
+    },
+    {
+      "date": "JUL-2026",
+      "ym": "2026-07",
+      "entity": "Aurora Operations, Inc.",
+      "make": "INTERNATIONAL",
+      "model": "LT62F",
+      "state": "TX",
+      "severity": "Property Damage. No Injured Reported",
+      "crashWith": "Pickup Truck"
+    },
+    {
+      "date": "JUL-2026",
+      "ym": "2026-07",
+      "entity": "Waymo LLC",
+      "make": "JAGUAR",
+      "model": "I-PACE",
+      "state": "CA",
+      "severity": "Property Damage. No Injured Reported",
+      "crashWith": "Pickup Truck"
+    },
+    {
+      "date": "JUL-2026",
+      "ym": "2026-07",
+      "entity": "Waymo LLC",
+      "make": "JAGUAR",
+      "model": "I-PACE",
+      "state": "TX",
+      "severity": "Property Damage. No Injured Reported",
+      "crashWith": "Pickup Truck"
+    },
+    {
+      "date": "JUL-2026",
+      "ym": "2026-07",
+      "entity": "Waymo LLC",
+      "make": "JAGUAR",
+      "model": "I-PACE",
+      "state": "CA",
+      "severity": "Property Damage. No Injured Reported",
+      "crashWith": "Passenger Car"
+    },
+    {
+      "date": "JUL-2026",
+      "ym": "2026-07",
+      "entity": "Waymo LLC",
+      "make": "JAGUAR",
+      "model": "I-PACE",
+      "state": "CA",
+      "severity": "Property Damage. No Injured Reported",
+      "crashWith": "SUV"
+    },
+    {
+      "date": "JUL-2026",
+      "ym": "2026-07",
+      "entity": "Waymo LLC",
+      "make": "JAGUAR",
+      "model": "I-PACE",
+      "state": "AZ",
+      "severity": "Property Damage. No Injured Reported",
+      "crashWith": "SUV"
+    },
+    {
+      "date": "JUL-2026",
+      "ym": "2026-07",
+      "entity": "Waymo LLC",
+      "make": "JAGUAR",
+      "model": "I-PACE",
+      "state": "CA",
+      "severity": "Property Damage. No Injured Reported",
+      "crashWith": "Passenger Car"
+    },
+    {
+      "date": "JUL-2026",
+      "ym": "2026-07",
+      "entity": "Zoox, Inc.",
+      "make": "ZOOX",
+      "model": "Zoox",
+      "state": "TX",
+      "severity": "Property Damage. No Injured Reported",
+      "crashWith": "Passenger Car"
+    },
+    {
+      "date": "JUL-2026",
+      "ym": "2026-07",
+      "entity": "Waymo LLC",
+      "make": "JAGUAR",
+      "model": "I-PACE",
+      "state": "CA",
+      "severity": "Unknown",
+      "crashWith": "SUV"
+    },
+    {
+      "date": "JUL-2026",
+      "ym": "2026-07",
+      "entity": "Waymo LLC",
+      "make": "JAGUAR",
+      "model": "I-PACE",
+      "state": "CA",
+      "severity": "Property Damage. No Injured Reported",
+      "crashWith": "Heavy Truck"
+    },
+    {
+      "date": "JUL-2026",
+      "ym": "2026-07",
+      "entity": "Waymo LLC",
+      "make": "JAGUAR",
+      "model": "I-PACE",
+      "state": "CA",
+      "severity": "Property Damage. No Injured Reported",
+      "crashWith": "Van"
+    },
+    {
+      "date": "JUL-2026",
+      "ym": "2026-07",
+      "entity": "Waymo LLC",
+      "make": "JAGUAR",
+      "model": "I-PACE",
+      "state": "DC",
+      "severity": "Minor W/ Hospitalization",
+      "crashWith": "SUV"
+    },
+    {
+      "date": "JUN-2026",
+      "ym": "2026-06",
+      "entity": "Waymo LLC",
+      "make": "JAGUAR",
+      "model": "I-PACE",
+      "state": "CA",
+      "severity": "Property Damage. No Injured Reported",
+      "crashWith": "Passenger Car"
+    },
+    {
+      "date": "JUN-2026",
+      "ym": "2026-06",
+      "entity": "Avride Inc.",
+      "make": "HYUNDAI",
+      "model": "Ioniq 5",
+      "state": "TX",
+      "severity": "Property Damage. No Injured Reported",
+      "crashWith": "SUV"
+    },
+    {
+      "date": "JUN-2026",
+      "ym": "2026-06",
+      "entity": "Avride Inc.",
+      "make": "HYUNDAI",
+      "model": "Ioniq 5",
+      "state": "TX",
+      "severity": "No Injured Reported",
+      "crashWith": "Passenger Car"
+    },
+    {
+      "date": "JUN-2026",
+      "ym": "2026-06",
+      "entity": "Avride Inc.",
+      "make": "HYUNDAI",
+      "model": "Ioniq 5",
+      "state": "TX",
+      "severity": "Property Damage. No Injured Reported",
+      "crashWith": "SUV"
+    },
+    {
+      "date": "JUN-2026",
+      "ym": "2026-06",
+      "entity": "Avride Inc.",
+      "make": "HYUNDAI",
+      "model": "Ioniq 5",
+      "state": "TX",
+      "severity": "Property Damage. No Injured Reported",
+      "crashWith": "SUV"
+    },
+    {
+      "date": "JUN-2026",
+      "ym": "2026-06",
+      "entity": "Avride Inc.",
+      "make": "HYUNDAI",
+      "model": "Ioniq 5",
+      "state": "TX",
+      "severity": "Property Damage. No Injured Reported",
+      "crashWith": "Pickup Truck"
+    },
+    {
+      "date": "JUN-2026",
+      "ym": "2026-06",
+      "entity": "Avride Inc.",
+      "make": "HYUNDAI",
+      "model": "Ioniq 5",
+      "state": "TX",
+      "severity": "Property Damage. No Injured Reported",
+      "crashWith": "Pickup Truck"
+    },
+    {
+      "date": "JUN-2026",
+      "ym": "2026-06",
+      "entity": "Avride Inc.",
+      "make": "HYUNDAI",
+      "model": "Ioniq 5",
+      "state": "TX",
+      "severity": "Property Damage. No Injured Reported",
+      "crashWith": "SUV"
+    },
+    {
+      "date": "JUN-2026",
+      "ym": "2026-06",
+      "entity": "Avride Inc.",
+      "make": "HYUNDAI",
+      "model": "Ioniq 5",
+      "state": "TX",
+      "severity": "Property Damage. No Injured Reported",
+      "crashWith": "SUV"
+    },
+    {
+      "date": "JUN-2026",
+      "ym": "2026-06",
+      "entity": "Avride Inc.",
+      "make": "HYUNDAI",
+      "model": "Ioniq 5",
+      "state": "TX",
+      "severity": "No Injured Reported",
+      "crashWith": "SUV"
+    },
+    {
+      "date": "JUN-2026",
+      "ym": "2026-06",
+      "entity": "Waymo LLC",
+      "make": "JAGUAR",
+      "model": "I-PACE",
+      "state": "AZ",
+      "severity": "Property Damage. No Injured Reported",
+      "crashWith": "Other Fixed Object"
+    },
+    {
+      "date": "JUN-2026",
+      "ym": "2026-06",
+      "entity": "Waymo LLC",
+      "make": "ZEEKR",
+      "model": "RT",
+      "state": "CO",
+      "severity": "Property Damage. No Injured Reported",
+      "crashWith": "SUV"
+    },
+    {
+      "date": "JUN-2026",
+      "ym": "2026-06",
+      "entity": "Waymo LLC",
+      "make": "JAGUAR",
+      "model": "I-PACE",
+      "state": "FL",
+      "severity": "Property Damage. No Injured Reported",
+      "crashWith": "SUV"
+    },
+    {
+      "date": "JUN-2026",
+      "ym": "2026-06",
+      "entity": "Waymo LLC",
+      "make": "JAGUAR",
+      "model": "I-PACE",
+      "state": "CA",
+      "severity": "Property Damage. No Injured Reported",
+      "crashWith": "Heavy Truck"
+    },
+    {
+      "date": "JUN-2026",
+      "ym": "2026-06",
+      "entity": "Waymo LLC",
+      "make": "ZEEKR",
+      "model": "RT",
+      "state": "CA",
+      "severity": "Property Damage. No Injured Reported",
+      "crashWith": "Van"
+    },
+    {
+      "date": "JUN-2026",
+      "ym": "2026-06",
+      "entity": "Waymo LLC",
+      "make": "JAGUAR",
+      "model": "I-PACE",
+      "state": "CA",
+      "severity": "Property Damage. No Injured Reported",
+      "crashWith": "Animal"
+    },
+    {
+      "date": "JUN-2026",
+      "ym": "2026-06",
+      "entity": "Waymo LLC",
+      "make": "JAGUAR",
+      "model": "I-PACE",
+      "state": "CA",
+      "severity": "Property Damage. No Injured Reported",
+      "crashWith": "Heavy Truck"
+    },
+    {
+      "date": "JUN-2026",
+      "ym": "2026-06",
+      "entity": "Waymo LLC",
+      "make": "JAGUAR",
+      "model": "I-PACE",
+      "state": "TX",
+      "severity": "Property Damage. No Injured Reported",
+      "crashWith": "Passenger Car"
+    },
+    {
+      "date": "JUN-2026",
+      "ym": "2026-06",
+      "entity": "Waymo LLC",
+      "make": "JAGUAR",
+      "model": "I-PACE",
+      "state": "CA",
+      "severity": "Property Damage. No Injured Reported",
+      "crashWith": "Passenger Car"
+    },
+    {
+      "date": "JUN-2026",
+      "ym": "2026-06",
+      "entity": "Waymo LLC",
+      "make": "JAGUAR",
+      "model": "I-PACE",
+      "state": "GA",
+      "severity": "Property Damage. No Injured Reported",
+      "crashWith": "Passenger Car"
+    },
+    {
+      "date": "JUN-2026",
+      "ym": "2026-06",
+      "entity": "Waymo LLC",
+      "make": "JAGUAR",
+      "model": "I-PACE",
+      "state": "CA",
+      "severity": "Minor W/O Hospitalization",
+      "crashWith": "Passenger Car"
+    },
+    {
+      "date": "JUN-2026",
+      "ym": "2026-06",
+      "entity": "Waymo LLC",
+      "make": "JAGUAR",
+      "model": "I-PACE",
+      "state": "CA",
+      "severity": "Property Damage. No Injured Reported",
+      "crashWith": "Passenger Car"
+    },
+    {
+      "date": "JUN-2026",
+      "ym": "2026-06",
+      "entity": "Waymo LLC",
+      "make": "JAGUAR",
+      "model": "I-PACE",
+      "state": "TX",
+      "severity": "Property Damage. No Injured Reported",
+      "crashWith": "Passenger Car"
+    },
+    {
+      "date": "JUN-2026",
+      "ym": "2026-06",
+      "entity": "Waymo LLC",
+      "make": "JAGUAR",
+      "model": "I-PACE",
+      "state": "AZ",
+      "severity": "Property Damage. No Injured Reported",
+      "crashWith": "Pole / Tree"
+    },
+    {
+      "date": "JUN-2026",
+      "ym": "2026-06",
+      "entity": "Waymo LLC",
+      "make": "JAGUAR",
+      "model": "I-PACE",
+      "state": "AZ",
+      "severity": "Property Damage. No Injured Reported",
+      "crashWith": "Other Fixed Object"
+    },
+    {
+      "date": "JUN-2026",
+      "ym": "2026-06",
+      "entity": "Waymo LLC",
+      "make": "JAGUAR",
+      "model": "I-PACE",
+      "state": "CA",
+      "severity": "Property Damage. No Injured Reported",
+      "crashWith": "Pickup Truck"
+    },
+    {
+      "date": "JUN-2026",
+      "ym": "2026-06",
+      "entity": "Waymo LLC",
+      "make": "JAGUAR",
+      "model": "I-PACE",
+      "state": "AZ",
+      "severity": "Property Damage. No Injured Reported",
+      "crashWith": "SUV"
+    },
+    {
+      "date": "JUN-2026",
+      "ym": "2026-06",
+      "entity": "Waymo LLC",
+      "make": "JAGUAR",
+      "model": "I-PACE",
+      "state": "CA",
+      "severity": "Property Damage. No Injured Reported",
+      "crashWith": "Passenger Car"
+    },
+    {
+      "date": "JUN-2026",
+      "ym": "2026-06",
+      "entity": "Waymo LLC",
+      "make": "JAGUAR",
+      "model": "I-PACE",
+      "state": "CA",
+      "severity": "Property Damage. No Injured Reported",
+      "crashWith": "SUV"
+    },
+    {
+      "date": "JUN-2026",
+      "ym": "2026-06",
+      "entity": "Waymo LLC",
+      "make": "JAGUAR",
+      "model": "I-PACE",
+      "state": "CA",
+      "severity": "Property Damage. No Injured Reported",
+      "crashWith": "Pickup Truck"
+    },
+    {
+      "date": "JUN-2026",
+      "ym": "2026-06",
+      "entity": "Waymo LLC",
+      "make": "JAGUAR",
+      "model": "I-PACE",
+      "state": "CA",
+      "severity": "Property Damage. No Injured Reported",
+      "crashWith": "Heavy Truck"
+    },
+    {
+      "date": "JUN-2026",
+      "ym": "2026-06",
+      "entity": "Waymo LLC",
+      "make": "JAGUAR",
+      "model": "I-PACE",
+      "state": "FL",
+      "severity": "Property Damage. No Injured Reported",
+      "crashWith": "Passenger Car"
+    },
+    {
+      "date": "JUN-2026",
+      "ym": "2026-06",
+      "entity": "Waymo LLC",
+      "make": "JAGUAR",
+      "model": "I-PACE",
+      "state": "CA",
+      "severity": "Property Damage. No Injured Reported",
+      "crashWith": "Passenger Car"
+    },
+    {
+      "date": "JUN-2026",
+      "ym": "2026-06",
+      "entity": "Waymo LLC",
+      "make": "JAGUAR",
+      "model": "I-PACE",
+      "state": "AZ",
+      "severity": "Property Damage. No Injured Reported",
+      "crashWith": "SUV"
+    },
+    {
+      "date": "JUN-2026",
+      "ym": "2026-06",
+      "entity": "Waymo LLC",
+      "make": "JAGUAR",
+      "model": "I-PACE",
+      "state": "GA",
+      "severity": "Property Damage. No Injured Reported",
+      "crashWith": "SUV"
+    },
+    {
+      "date": "JUN-2026",
+      "ym": "2026-06",
+      "entity": "Waymo LLC",
+      "make": "JAGUAR",
+      "model": "I-PACE",
+      "state": "TX",
+      "severity": "Property Damage. No Injured Reported",
+      "crashWith": "Other, see Narrative"
+    },
+    {
+      "date": "JUN-2026",
+      "ym": "2026-06",
+      "entity": "Waymo LLC",
+      "make": "JAGUAR",
+      "model": "I-PACE",
+      "state": "AZ",
+      "severity": "Property Damage. No Injured Reported",
+      "crashWith": "Pickup Truck"
+    },
+    {
+      "date": "JUN-2026",
+      "ym": "2026-06",
+      "entity": "Waymo LLC",
+      "make": "JAGUAR",
+      "model": "I-PACE",
+      "state": "AZ",
+      "severity": "Property Damage. No Injured Reported",
+      "crashWith": "Heavy Truck"
+    },
+    {
+      "date": "JUN-2026",
+      "ym": "2026-06",
+      "entity": "Waymo LLC",
+      "make": "JAGUAR",
+      "model": "I-PACE",
+      "state": "CA",
+      "severity": "Property Damage. No Injured Reported",
+      "crashWith": "Passenger Car"
+    },
+    {
+      "date": "JUN-2026",
+      "ym": "2026-06",
+      "entity": "Waymo LLC",
+      "make": "JAGUAR",
+      "model": "I-PACE",
+      "state": "TX",
+      "severity": "Property Damage. No Injured Reported",
+      "crashWith": "Passenger Car"
+    },
+    {
+      "date": "JUN-2026",
+      "ym": "2026-06",
+      "entity": "Waymo LLC",
+      "make": "JAGUAR",
+      "model": "I-PACE",
+      "state": "AZ",
+      "severity": "Property Damage. No Injured Reported",
+      "crashWith": "Pickup Truck"
+    },
+    {
+      "date": "JUN-2026",
+      "ym": "2026-06",
+      "entity": "Waymo LLC",
+      "make": "JAGUAR",
+      "model": "I-PACE",
+      "state": "CA",
+      "severity": "Property Damage. No Injured Reported",
+      "crashWith": "SUV"
+    },
+    {
+      "date": "JUN-2026",
+      "ym": "2026-06",
+      "entity": "Waymo LLC",
+      "make": "JAGUAR",
+      "model": "I-PACE",
+      "state": "CA",
+      "severity": "Property Damage. No Injured Reported",
+      "crashWith": "Other, see Narrative"
+    },
+    {
+      "date": "JUN-2026",
+      "ym": "2026-06",
+      "entity": "Waymo LLC",
+      "make": "JAGUAR",
+      "model": "I-PACE",
+      "state": "CA",
+      "severity": "Property Damage. No Injured Reported",
+      "crashWith": "Pickup Truck"
+    },
+    {
+      "date": "JUN-2026",
+      "ym": "2026-06",
+      "entity": "Waymo LLC",
+      "make": "JAGUAR",
+      "model": "I-PACE",
+      "state": "CA",
+      "severity": "Property Damage. No Injured Reported",
+      "crashWith": "SUV"
+    },
+    {
+      "date": "JUN-2026",
+      "ym": "2026-06",
+      "entity": "Waymo LLC",
+      "make": "JAGUAR",
+      "model": "I-PACE",
+      "state": "AZ",
+      "severity": "Property Damage. No Injured Reported",
+      "crashWith": "Other Fixed Object"
+    },
+    {
+      "date": "JUN-2026",
+      "ym": "2026-06",
+      "entity": "Waymo LLC",
+      "make": "JAGUAR",
+      "model": "I-PACE",
+      "state": "CA",
+      "severity": "Property Damage. No Injured Reported",
+      "crashWith": "Heavy Truck"
+    },
+    {
+      "date": "JUN-2026",
+      "ym": "2026-06",
+      "entity": "Waymo LLC",
+      "make": "JAGUAR",
+      "model": "I-PACE",
+      "state": "CA",
+      "severity": "Property Damage. No Injured Reported",
+      "crashWith": "Passenger Car"
+    },
+    {
+      "date": "JUN-2026",
+      "ym": "2026-06",
+      "entity": "Waymo LLC",
+      "make": "JAGUAR",
+      "model": "I-PACE",
+      "state": "GA",
+      "severity": "Property Damage. No Injured Reported",
+      "crashWith": "Heavy Truck"
+    },
+    {
+      "date": "JUN-2026",
+      "ym": "2026-06",
+      "entity": "Waymo LLC",
+      "make": "JAGUAR",
+      "model": "I-PACE",
+      "state": "TX",
+      "severity": "Property Damage. No Injured Reported",
+      "crashWith": "SUV"
+    },
+    {
+      "date": "JUN-2026",
+      "ym": "2026-06",
+      "entity": "Waymo LLC",
+      "make": "JAGUAR",
+      "model": "I-PACE",
+      "state": "GA",
+      "severity": "Property Damage. No Injured Reported",
+      "crashWith": "Heavy Truck"
+    },
+    {
+      "date": "JUN-2026",
+      "ym": "2026-06",
+      "entity": "Waymo LLC",
+      "make": "JAGUAR",
+      "model": "I-PACE",
+      "state": "CA",
+      "severity": "Property Damage. No Injured Reported",
+      "crashWith": "Bus"
+    },
+    {
+      "date": "JUN-2026",
+      "ym": "2026-06",
+      "entity": "Waymo LLC",
+      "make": "JAGUAR",
+      "model": "I-PACE",
+      "state": "AZ",
+      "severity": "Property Damage. No Injured Reported",
+      "crashWith": "SUV"
+    },
+    {
+      "date": "JUN-2026",
+      "ym": "2026-06",
+      "entity": "Waymo LLC",
+      "make": "ZEEKR",
+      "model": "RT",
+      "state": "CA",
+      "severity": "Property Damage. No Injured Reported",
+      "crashWith": "Pickup Truck"
+    },
+    {
+      "date": "JUN-2026",
+      "ym": "2026-06",
+      "entity": "Waymo LLC",
+      "make": "JAGUAR",
+      "model": "I-PACE",
+      "state": "CA",
+      "severity": "Property Damage. No Injured Reported",
+      "crashWith": "Heavy Truck"
+    },
+    {
+      "date": "JUN-2026",
+      "ym": "2026-06",
+      "entity": "Waymo LLC",
+      "make": "JAGUAR",
+      "model": "I-PACE",
+      "state": "CA",
+      "severity": "Property Damage. No Injured Reported",
+      "crashWith": "SUV"
+    },
+    {
+      "date": "JUN-2026",
+      "ym": "2026-06",
+      "entity": "Waymo LLC",
+      "make": "JAGUAR",
+      "model": "I-PACE",
+      "state": "CA",
+      "severity": "Property Damage. No Injured Reported",
+      "crashWith": "Non-Motorist: Scooter - Skateboard"
+    },
+    {
+      "date": "JUN-2026",
+      "ym": "2026-06",
+      "entity": "Waymo LLC",
+      "make": "JAGUAR",
+      "model": "I-PACE",
+      "state": "CA",
+      "severity": "Property Damage. No Injured Reported",
+      "crashWith": "Passenger Car"
+    },
+    {
+      "date": "JUN-2026",
+      "ym": "2026-06",
+      "entity": "Waymo LLC",
+      "make": "JAGUAR",
+      "model": "I-PACE",
+      "state": "TX",
+      "severity": "Property Damage. No Injured Reported",
+      "crashWith": "Passenger Car"
+    },
+    {
+      "date": "JUN-2026",
+      "ym": "2026-06",
+      "entity": "Tesla, Inc.",
+      "make": "TESLA",
+      "model": "Model Y",
+      "state": "TX",
+      "severity": "Property Damage. No Injured Reported",
+      "crashWith": "SUV"
+    },
+    {
+      "date": "JUN-2026",
+      "ym": "2026-06",
+      "entity": "Tesla, Inc.",
+      "make": "TESLA",
+      "model": "Model Y",
+      "state": "TX",
+      "severity": "Property Damage. No Injured Reported",
+      "crashWith": "Passenger Car"
+    },
+    {
+      "date": "JUN-2026",
+      "ym": "2026-06",
+      "entity": "Gatik AI Inc.",
+      "make": "ISUZU",
+      "model": "FVR",
+      "state": "AR",
+      "severity": "Property Damage. No Injured Reported",
+      "crashWith": "Heavy Truck"
+    },
+    {
+      "date": "JUN-2026",
+      "ym": "2026-06",
+      "entity": "Motional",
+      "make": "HYUNDAI",
+      "model": "Ioniq 5",
+      "state": "NV",
+      "severity": "No Injured Reported",
+      "crashWith": "Passenger Car"
+    },
+    {
+      "date": "JUN-2026",
+      "ym": "2026-06",
+      "entity": "Zoox, Inc.",
+      "make": "ZOOX",
+      "model": "Zoox",
+      "state": "CA",
+      "severity": "Unknown",
+      "crashWith": "Non-Motorist: Cyclist"
+    },
+    {
+      "date": "JUN-2026",
+      "ym": "2026-06",
+      "entity": "Waymo LLC",
+      "make": "JAGUAR",
+      "model": "I-PACE",
+      "state": "CA",
+      "severity": "Unknown",
+      "crashWith": "Non-Motorist: Pedestrian"
+    },
+    {
+      "date": "JUN-2026",
+      "ym": "2026-06",
+      "entity": "Waymo LLC",
+      "make": "JAGUAR",
+      "model": "I-PACE",
+      "state": "FL",
+      "severity": "Property Damage. No Injured Reported",
+      "crashWith": "Other, see Narrative"
+    },
+    {
+      "date": "JUN-2026",
+      "ym": "2026-06",
+      "entity": "Waymo LLC",
+      "make": "JAGUAR",
+      "model": "I-PACE",
+      "state": "CA",
+      "severity": "Property Damage. No Injured Reported",
+      "crashWith": "Heavy Truck"
+    },
+    {
+      "date": "JUN-2026",
+      "ym": "2026-06",
+      "entity": "Waymo LLC",
+      "make": "JAGUAR",
+      "model": "I-PACE",
+      "state": "TX",
+      "severity": "Property Damage. No Injured Reported",
+      "crashWith": "SUV"
+    },
+    {
+      "date": "JUN-2026",
+      "ym": "2026-06",
+      "entity": "Waymo LLC",
+      "make": "JAGUAR",
+      "model": "I-PACE",
+      "state": "CA",
+      "severity": "Property Damage. No Injured Reported",
+      "crashWith": "Passenger Car"
+    },
+    {
+      "date": "JUN-2026",
+      "ym": "2026-06",
+      "entity": "Waymo LLC",
+      "make": "JAGUAR",
+      "model": "I-PACE",
+      "state": "CA",
+      "severity": "Property Damage. No Injured Reported",
+      "crashWith": "Passenger Car"
+    },
+    {
+      "date": "JUN-2026",
+      "ym": "2026-06",
+      "entity": "Waymo LLC",
+      "make": "JAGUAR",
+      "model": "I-PACE",
+      "state": "FL",
+      "severity": "Property Damage. No Injured Reported",
+      "crashWith": "Passenger Car"
+    },
+    {
+      "date": "JUN-2026",
+      "ym": "2026-06",
+      "entity": "Waymo LLC",
+      "make": "JAGUAR",
+      "model": "I-PACE",
+      "state": "CA",
+      "severity": "Property Damage. No Injured Reported",
+      "crashWith": "Pickup Truck"
+    },
+    {
+      "date": "JUN-2026",
+      "ym": "2026-06",
+      "entity": "Waymo LLC",
+      "make": "JAGUAR",
+      "model": "I-PACE",
+      "state": "CA",
+      "severity": "Minor W/ Hospitalization",
+      "crashWith": "SUV"
+    },
+    {
+      "date": "JUN-2026",
+      "ym": "2026-06",
+      "entity": "Zoox, Inc.",
+      "make": "TOYOTA",
+      "model": "Highlander",
+      "state": "NV",
+      "severity": "Property Damage. No Injured Reported",
+      "crashWith": "Passenger Car"
+    },
+    {
+      "date": "JUN-2026",
+      "ym": "2026-06",
+      "entity": "Waymo LLC",
+      "make": "JAGUAR",
+      "model": "I-PACE",
+      "state": "CA",
+      "severity": "Property Damage. No Injured Reported",
+      "crashWith": "Passenger Car"
+    },
+    {
+      "date": "JUN-2026",
+      "ym": "2026-06",
+      "entity": "Waymo LLC",
+      "make": "JAGUAR",
+      "model": "I-PACE",
+      "state": "AZ",
+      "severity": "Property Damage. No Injured Reported",
+      "crashWith": "Passenger Car"
+    },
+    {
+      "date": "JUN-2026",
+      "ym": "2026-06",
+      "entity": "Waymo LLC",
+      "make": "JAGUAR",
+      "model": "I-PACE",
+      "state": "TX",
+      "severity": "Property Damage. No Injured Reported",
+      "crashWith": "Heavy Truck"
+    },
+    {
+      "date": "JUN-2026",
+      "ym": "2026-06",
+      "entity": "Zoox, Inc.",
+      "make": "ZOOX",
+      "model": "Zoox",
+      "state": "NV",
+      "severity": "Property Damage. No Injured Reported",
+      "crashWith": "SUV"
+    },
+    {
+      "date": "JUN-2026",
+      "ym": "2026-06",
+      "entity": "Waymo LLC",
+      "make": "ZEEKR",
+      "model": "RT",
+      "state": "CA",
+      "severity": "Moderate W/O Hospitalization",
+      "crashWith": "Non-Motorist: Scooter - Skateboard"
+    },
+    {
+      "date": "JUN-2026",
+      "ym": "2026-06",
+      "entity": "Waymo LLC",
+      "make": "JAGUAR",
+      "model": "I-PACE",
+      "state": "CA",
+      "severity": "Property Damage. No Injured Reported",
+      "crashWith": "SUV"
+    },
+    {
+      "date": "JUN-2026",
+      "ym": "2026-06",
+      "entity": "Waymo LLC",
+      "make": "JAGUAR",
+      "model": "I-PACE",
+      "state": "TX",
+      "severity": "Property Damage. No Injured Reported",
+      "crashWith": "SUV"
+    },
+    {
+      "date": "JUN-2026",
+      "ym": "2026-06",
+      "entity": "Waymo LLC",
+      "make": "JAGUAR",
+      "model": "I-PACE",
+      "state": "TX",
+      "severity": "Property Damage. No Injured Reported",
+      "crashWith": "Other, see Narrative"
+    },
+    {
+      "date": "JUN-2026",
+      "ym": "2026-06",
+      "entity": "Waymo LLC",
+      "make": "ZEEKR",
+      "model": "RT",
+      "state": "CA",
+      "severity": "Moderate W/O Hospitalization",
+      "crashWith": "Non-Motorist: Scooter - Skateboard"
+    },
+    {
+      "date": "JUN-2026",
+      "ym": "2026-06",
+      "entity": "Waymo LLC",
+      "make": "JAGUAR",
+      "model": "I-PACE",
+      "state": "TX",
+      "severity": "Property Damage. No Injured Reported",
+      "crashWith": "Passenger Car"
+    },
+    {
+      "date": "JUN-2026",
+      "ym": "2026-06",
+      "entity": "Waymo LLC",
+      "make": "JAGUAR",
+      "model": "I-PACE",
+      "state": "CA",
+      "severity": "Property Damage. No Injured Reported",
+      "crashWith": "Passenger Car"
+    },
+    {
+      "date": "JUN-2026",
+      "ym": "2026-06",
+      "entity": "Waymo LLC",
+      "make": "JAGUAR",
+      "model": "I-PACE",
+      "state": "CA",
+      "severity": "Property Damage. No Injured Reported",
+      "crashWith": "Passenger Car"
+    },
+    {
+      "date": "JUN-2026",
+      "ym": "2026-06",
+      "entity": "Waymo LLC",
+      "make": "JAGUAR",
+      "model": "I-PACE",
+      "state": "CA",
+      "severity": "Property Damage. No Injured Reported",
+      "crashWith": "Other, see Narrative"
+    },
+    {
+      "date": "JUN-2026",
+      "ym": "2026-06",
+      "entity": "Waymo LLC",
+      "make": "JAGUAR",
+      "model": "I-PACE",
+      "state": "AZ",
+      "severity": "Property Damage. No Injured Reported",
+      "crashWith": "Passenger Car"
+    },
+    {
+      "date": "JUN-2026",
+      "ym": "2026-06",
+      "entity": "Waymo LLC",
+      "make": "JAGUAR",
+      "model": "I-PACE",
+      "state": "AZ",
+      "severity": "Serious W/ Hospitalization",
+      "crashWith": "SUV"
+    },
+    {
+      "date": "JUN-2026",
+      "ym": "2026-06",
+      "entity": "Waymo LLC",
+      "make": "JAGUAR",
+      "model": "I-PACE",
+      "state": "CA",
+      "severity": "Property Damage. No Injured Reported",
+      "crashWith": "SUV"
+    },
+    {
+      "date": "JUN-2026",
+      "ym": "2026-06",
+      "entity": "Waymo LLC",
+      "make": "JAGUAR",
+      "model": "I-PACE",
+      "state": "TX",
+      "severity": "Property Damage. No Injured Reported",
+      "crashWith": "Other, see Narrative"
+    },
+    {
+      "date": "JUN-2026",
+      "ym": "2026-06",
+      "entity": "Waymo LLC",
+      "make": "JAGUAR",
+      "model": "I-PACE",
+      "state": "CA",
+      "severity": "Property Damage. No Injured Reported",
+      "crashWith": "SUV"
+    },
+    {
+      "date": "JUN-2026",
+      "ym": "2026-06",
+      "entity": "Waymo LLC",
+      "make": "JAGUAR",
+      "model": "I-PACE",
+      "state": "TX",
+      "severity": "Property Damage. No Injured Reported",
+      "crashWith": "SUV"
+    },
+    {
+      "date": "JUN-2026",
+      "ym": "2026-06",
+      "entity": "Waymo LLC",
+      "make": "JAGUAR",
+      "model": "I-PACE",
+      "state": "CA",
+      "severity": "Minor W/O Hospitalization",
+      "crashWith": "Passenger Car"
+    },
+    {
+      "date": "JUN-2026",
+      "ym": "2026-06",
+      "entity": "Waymo LLC",
+      "make": "JAGUAR",
+      "model": "I-PACE",
+      "state": "CA",
+      "severity": "Property Damage. No Injured Reported",
+      "crashWith": "Pickup Truck"
+    },
+    {
+      "date": "JUN-2026",
+      "ym": "2026-06",
+      "entity": "Waymo LLC",
+      "make": "JAGUAR",
+      "model": "I-PACE",
+      "state": "CA",
+      "severity": "Property Damage. No Injured Reported",
+      "crashWith": "SUV"
+    },
+    {
+      "date": "JUN-2026",
+      "ym": "2026-06",
+      "entity": "Zoox, Inc.",
+      "make": "ZOOX",
+      "model": "Zoox",
+      "state": "NV",
+      "severity": "Minor W/ Hospitalization",
+      "crashWith": "Pickup Truck"
+    },
+    {
+      "date": "JUN-2026",
+      "ym": "2026-06",
+      "entity": "Zoox, Inc.",
+      "make": "ZOOX",
+      "model": "Zoox",
+      "state": "NV",
+      "severity": "Property Damage. No Injured Reported",
+      "crashWith": "Passenger Car"
+    },
+    {
+      "date": "JUN-2026",
+      "ym": "2026-06",
+      "entity": "Waymo LLC",
+      "make": "JAGUAR",
+      "model": "I-PACE",
+      "state": "AZ",
+      "severity": "Property Damage. No Injured Reported",
+      "crashWith": "SUV"
+    },
+    {
+      "date": "JUN-2026",
+      "ym": "2026-06",
+      "entity": "Waymo LLC",
+      "make": "JAGUAR",
+      "model": "I-PACE",
+      "state": "GA",
+      "severity": "Property Damage. No Injured Reported",
+      "crashWith": "SUV"
+    },
+    {
+      "date": "JUN-2026",
+      "ym": "2026-06",
+      "entity": "Waymo LLC",
+      "make": "JAGUAR",
+      "model": "I-PACE",
+      "state": "FL",
+      "severity": "Property Damage. No Injured Reported",
+      "crashWith": "Passenger Car"
+    },
+    {
+      "date": "JUN-2026",
+      "ym": "2026-06",
+      "entity": "Waymo LLC",
+      "make": "JAGUAR",
+      "model": "I-PACE",
+      "state": "CA",
+      "severity": "Property Damage. No Injured Reported",
+      "crashWith": "Pickup Truck"
+    },
+    {
+      "date": "JUN-2026",
+      "ym": "2026-06",
+      "entity": "Waymo LLC",
+      "make": "JAGUAR",
+      "model": "I-PACE",
+      "state": "CA",
+      "severity": "Property Damage. No Injured Reported",
+      "crashWith": "SUV"
+    },
+    {
+      "date": "JUN-2026",
+      "ym": "2026-06",
+      "entity": "Waymo LLC",
+      "make": "JAGUAR",
+      "model": "I-PACE",
+      "state": "CA",
+      "severity": "Property Damage. No Injured Reported",
+      "crashWith": "Other, see Narrative"
+    },
+    {
+      "date": "JUN-2026",
+      "ym": "2026-06",
+      "entity": "Waymo LLC",
+      "make": "JAGUAR",
+      "model": "I-PACE",
+      "state": "CA",
+      "severity": "Property Damage. No Injured Reported",
+      "crashWith": "SUV"
+    },
+    {
+      "date": "JUN-2026",
+      "ym": "2026-06",
+      "entity": "Waymo LLC",
+      "make": "JAGUAR",
+      "model": "I-PACE",
+      "state": "CA",
+      "severity": "Property Damage. No Injured Reported",
+      "crashWith": "Van"
+    },
+    {
+      "date": "JUN-2026",
+      "ym": "2026-06",
+      "entity": "Waymo LLC",
+      "make": "JAGUAR",
+      "model": "I-PACE",
+      "state": "AZ",
+      "severity": "Minor W/O Hospitalization",
+      "crashWith": "Passenger Car"
+    },
+    {
+      "date": "JUN-2026",
+      "ym": "2026-06",
+      "entity": "Waymo LLC",
+      "make": "JAGUAR",
+      "model": "I-PACE",
+      "state": "TX",
+      "severity": "Property Damage. No Injured Reported",
+      "crashWith": "Heavy Truck"
+    },
+    {
+      "date": "JUN-2026",
+      "ym": "2026-06",
+      "entity": "Waymo LLC",
+      "make": "JAGUAR",
+      "model": "I-PACE",
+      "state": "FL",
+      "severity": "Unknown",
+      "crashWith": "Van"
+    },
+    {
+      "date": "JUN-2026",
+      "ym": "2026-06",
+      "entity": "Waymo LLC",
+      "make": "JAGUAR",
+      "model": "I-PACE",
+      "state": "CA",
+      "severity": "Property Damage. No Injured Reported",
+      "crashWith": "Other, see Narrative"
+    },
     {
       "date": "JUN-2026",
       "ym": "2026-06",
@@ -394,6 +1646,26 @@
       "state": "TX",
       "severity": "Property Damage. No Injured Reported",
       "crashWith": "SUV"
+    },
+    {
+      "date": "MAY-2026",
+      "ym": "2026-05",
+      "entity": "Zoox, Inc.",
+      "make": "TOYOTA",
+      "model": "Highlander",
+      "state": "CA",
+      "severity": "Property Damage. No Injured Reported",
+      "crashWith": "Passenger Car"
+    },
+    {
+      "date": "MAY-2026",
+      "ym": "2026-05",
+      "entity": "Zoox, Inc.",
+      "make": "TOYOTA",
+      "model": "Highlander",
+      "state": "FL",
+      "severity": "Property Damage. No Injured Reported",
+      "crashWith": "Pickup Truck"
     },
     {
       "date": "MAY-2026",
@@ -954,1266 +2226,6 @@
       "state": "NV",
       "severity": "No Injured Reported",
       "crashWith": "Passenger Car"
-    },
-    {
-      "date": "MAY-2026",
-      "ym": "2026-05",
-      "entity": "Waymo LLC",
-      "make": "JAGUAR",
-      "model": "I-PACE",
-      "state": "GA",
-      "severity": "Property Damage. No Injured Reported",
-      "crashWith": "Passenger Car"
-    },
-    {
-      "date": "MAY-2026",
-      "ym": "2026-05",
-      "entity": "Waymo LLC",
-      "make": "JAGUAR",
-      "model": "I-PACE",
-      "state": "CA",
-      "severity": "Property Damage. No Injured Reported",
-      "crashWith": "Other, see Narrative"
-    },
-    {
-      "date": "MAY-2026",
-      "ym": "2026-05",
-      "entity": "Waymo LLC",
-      "make": "JAGUAR",
-      "model": "I-PACE",
-      "state": "CA",
-      "severity": "Property Damage. No Injured Reported",
-      "crashWith": "Passenger Car"
-    },
-    {
-      "date": "MAY-2026",
-      "ym": "2026-05",
-      "entity": "Waymo LLC",
-      "make": "JAGUAR",
-      "model": "I-PACE",
-      "state": "CA",
-      "severity": "Property Damage. No Injured Reported",
-      "crashWith": "Passenger Car"
-    },
-    {
-      "date": "MAY-2026",
-      "ym": "2026-05",
-      "entity": "Waymo LLC",
-      "make": "JAGUAR",
-      "model": "I-PACE",
-      "state": "CA",
-      "severity": "Property Damage. No Injured Reported",
-      "crashWith": "First Responder Vehicle"
-    },
-    {
-      "date": "MAY-2026",
-      "ym": "2026-05",
-      "entity": "Waymo LLC",
-      "make": "JAGUAR",
-      "model": "I-PACE",
-      "state": "CA",
-      "severity": "Property Damage. No Injured Reported",
-      "crashWith": "Animal"
-    },
-    {
-      "date": "MAY-2026",
-      "ym": "2026-05",
-      "entity": "Zoox, Inc.",
-      "make": "ZOOX",
-      "model": "Zoox",
-      "state": "NV",
-      "severity": "Unknown",
-      "crashWith": "Passenger Car"
-    },
-    {
-      "date": "MAY-2026",
-      "ym": "2026-05",
-      "entity": "Waymo LLC",
-      "make": "JAGUAR",
-      "model": "I-PACE",
-      "state": "TX",
-      "severity": "Property Damage. No Injured Reported",
-      "crashWith": "Other, see Narrative"
-    },
-    {
-      "date": "MAY-2026",
-      "ym": "2026-05",
-      "entity": "Waymo LLC",
-      "make": "JAGUAR",
-      "model": "I-PACE",
-      "state": "CA",
-      "severity": "Minor W/ Hospitalization",
-      "crashWith": "Passenger Car"
-    },
-    {
-      "date": "MAY-2026",
-      "ym": "2026-05",
-      "entity": "Waymo LLC",
-      "make": "JAGUAR",
-      "model": "I-PACE",
-      "state": "TX",
-      "severity": "Property Damage. No Injured Reported",
-      "crashWith": "Pickup Truck"
-    },
-    {
-      "date": "MAY-2026",
-      "ym": "2026-05",
-      "entity": "Waymo LLC",
-      "make": "JAGUAR",
-      "model": "I-PACE",
-      "state": "AZ",
-      "severity": "Property Damage. No Injured Reported",
-      "crashWith": "Pickup Truck"
-    },
-    {
-      "date": "MAY-2026",
-      "ym": "2026-05",
-      "entity": "Waymo LLC",
-      "make": "JAGUAR",
-      "model": "I-PACE",
-      "state": "CA",
-      "severity": "Property Damage. No Injured Reported",
-      "crashWith": "Non-Motorist: Cyclist"
-    },
-    {
-      "date": "MAY-2026",
-      "ym": "2026-05",
-      "entity": "Waymo LLC",
-      "make": "JAGUAR",
-      "model": "I-PACE",
-      "state": "CA",
-      "severity": "Property Damage. No Injured Reported",
-      "crashWith": "Other, see Narrative"
-    },
-    {
-      "date": "MAY-2026",
-      "ym": "2026-05",
-      "entity": "Waymo LLC",
-      "make": "JAGUAR",
-      "model": "I-PACE",
-      "state": "CA",
-      "severity": "Minor W/O Hospitalization",
-      "crashWith": "SUV"
-    },
-    {
-      "date": "MAY-2026",
-      "ym": "2026-05",
-      "entity": "Waymo LLC",
-      "make": "JAGUAR",
-      "model": "I-PACE",
-      "state": "CA",
-      "severity": "Property Damage. No Injured Reported",
-      "crashWith": "SUV"
-    },
-    {
-      "date": "MAY-2026",
-      "ym": "2026-05",
-      "entity": "Waymo LLC",
-      "make": "JAGUAR",
-      "model": "I-PACE",
-      "state": "AZ",
-      "severity": "Moderate W/ Hospitalization",
-      "crashWith": "Pickup Truck"
-    },
-    {
-      "date": "MAY-2026",
-      "ym": "2026-05",
-      "entity": "Waymo LLC",
-      "make": "JAGUAR",
-      "model": "I-PACE",
-      "state": "CA",
-      "severity": "Moderate W/O Hospitalization",
-      "crashWith": "Passenger Car"
-    },
-    {
-      "date": "MAY-2026",
-      "ym": "2026-05",
-      "entity": "Waymo LLC",
-      "make": "JAGUAR",
-      "model": "I-PACE",
-      "state": "AZ",
-      "severity": "Minor W/O Hospitalization",
-      "crashWith": "Passenger Car"
-    },
-    {
-      "date": "MAY-2026",
-      "ym": "2026-05",
-      "entity": "Waymo LLC",
-      "make": "JAGUAR",
-      "model": "I-PACE",
-      "state": "CA",
-      "severity": "Property Damage. No Injured Reported",
-      "crashWith": "Bus"
-    },
-    {
-      "date": "MAY-2026",
-      "ym": "2026-05",
-      "entity": "Avride Inc.",
-      "make": "HYUNDAI",
-      "model": "Ioniq 5",
-      "state": "TX",
-      "severity": "Property Damage. No Injured Reported",
-      "crashWith": "SUV"
-    },
-    {
-      "date": "MAY-2026",
-      "ym": "2026-05",
-      "entity": "Avride Inc.",
-      "make": "HYUNDAI",
-      "model": "Ioniq 5",
-      "state": "TX",
-      "severity": "Property Damage. No Injured Reported",
-      "crashWith": "SUV"
-    },
-    {
-      "date": "MAY-2026",
-      "ym": "2026-05",
-      "entity": "Waymo LLC",
-      "make": "JAGUAR",
-      "model": "I-PACE",
-      "state": "CA",
-      "severity": "Property Damage. No Injured Reported",
-      "crashWith": "SUV"
-    },
-    {
-      "date": "MAY-2026",
-      "ym": "2026-05",
-      "entity": "Waymo LLC",
-      "make": "JAGUAR",
-      "model": "I-PACE",
-      "state": "CA",
-      "severity": "Property Damage. No Injured Reported",
-      "crashWith": "Passenger Car"
-    },
-    {
-      "date": "MAY-2026",
-      "ym": "2026-05",
-      "entity": "Waymo LLC",
-      "make": "JAGUAR",
-      "model": "I-PACE",
-      "state": "CA",
-      "severity": "Property Damage. No Injured Reported",
-      "crashWith": "Pickup Truck"
-    },
-    {
-      "date": "MAY-2026",
-      "ym": "2026-05",
-      "entity": "Waymo LLC",
-      "make": "JAGUAR",
-      "model": "I-PACE",
-      "state": "AZ",
-      "severity": "Property Damage. No Injured Reported",
-      "crashWith": "Other, see Narrative"
-    },
-    {
-      "date": "MAY-2026",
-      "ym": "2026-05",
-      "entity": "Waymo LLC",
-      "make": "ZEEKR",
-      "model": "RT",
-      "state": "CA",
-      "severity": "Moderate W/ Hospitalization",
-      "crashWith": "Pickup Truck"
-    },
-    {
-      "date": "MAY-2026",
-      "ym": "2026-05",
-      "entity": "Waymo LLC",
-      "make": "JAGUAR",
-      "model": "I-PACE",
-      "state": "CA",
-      "severity": "Property Damage. No Injured Reported",
-      "crashWith": "Passenger Car"
-    },
-    {
-      "date": "MAY-2026",
-      "ym": "2026-05",
-      "entity": "Waymo LLC",
-      "make": "JAGUAR",
-      "model": "I-PACE",
-      "state": "CA",
-      "severity": "Minor W/O Hospitalization",
-      "crashWith": "Pickup Truck"
-    },
-    {
-      "date": "MAY-2026",
-      "ym": "2026-05",
-      "entity": "Waymo LLC",
-      "make": "JAGUAR",
-      "model": "I-PACE",
-      "state": "CA",
-      "severity": "Property Damage. No Injured Reported",
-      "crashWith": "Passenger Car"
-    },
-    {
-      "date": "MAY-2026",
-      "ym": "2026-05",
-      "entity": "Waymo LLC",
-      "make": "JAGUAR",
-      "model": "I-PACE",
-      "state": "CA",
-      "severity": "Property Damage. No Injured Reported",
-      "crashWith": "Other, see Narrative"
-    },
-    {
-      "date": "MAY-2026",
-      "ym": "2026-05",
-      "entity": "Waymo LLC",
-      "make": "JAGUAR",
-      "model": "I-PACE",
-      "state": "CA",
-      "severity": "Unknown",
-      "crashWith": "SUV"
-    },
-    {
-      "date": "MAY-2026",
-      "ym": "2026-05",
-      "entity": "Waymo LLC",
-      "make": "JAGUAR",
-      "model": "I-PACE",
-      "state": "TX",
-      "severity": "Property Damage. No Injured Reported",
-      "crashWith": "Pickup Truck"
-    },
-    {
-      "date": "MAY-2026",
-      "ym": "2026-05",
-      "entity": "Waymo LLC",
-      "make": "JAGUAR",
-      "model": "I-PACE",
-      "state": "GA",
-      "severity": "Property Damage. No Injured Reported",
-      "crashWith": "Pickup Truck"
-    },
-    {
-      "date": "MAY-2026",
-      "ym": "2026-05",
-      "entity": "Waymo LLC",
-      "make": "JAGUAR",
-      "model": "I-PACE",
-      "state": "CA",
-      "severity": "Property Damage. No Injured Reported",
-      "crashWith": "SUV"
-    },
-    {
-      "date": "MAY-2026",
-      "ym": "2026-05",
-      "entity": "Waymo LLC",
-      "make": "JAGUAR",
-      "model": "I-PACE",
-      "state": "AZ",
-      "severity": "Property Damage. No Injured Reported",
-      "crashWith": "Other, see Narrative"
-    },
-    {
-      "date": "MAY-2026",
-      "ym": "2026-05",
-      "entity": "Waymo LLC",
-      "make": "JAGUAR",
-      "model": "I-PACE",
-      "state": "CA",
-      "severity": "Property Damage. No Injured Reported",
-      "crashWith": "SUV"
-    },
-    {
-      "date": "MAY-2026",
-      "ym": "2026-05",
-      "entity": "Waymo LLC",
-      "make": "JAGUAR",
-      "model": "I-PACE",
-      "state": "TX",
-      "severity": "Property Damage. No Injured Reported",
-      "crashWith": "Pickup Truck"
-    },
-    {
-      "date": "MAY-2026",
-      "ym": "2026-05",
-      "entity": "Waymo LLC",
-      "make": "JAGUAR",
-      "model": "I-PACE",
-      "state": "CA",
-      "severity": "Property Damage. No Injured Reported",
-      "crashWith": "Bus"
-    },
-    {
-      "date": "MAY-2026",
-      "ym": "2026-05",
-      "entity": "Waymo LLC",
-      "make": "JAGUAR",
-      "model": "I-PACE",
-      "state": "AZ",
-      "severity": "Unknown",
-      "crashWith": "Passenger Car"
-    },
-    {
-      "date": "MAY-2026",
-      "ym": "2026-05",
-      "entity": "Waymo LLC",
-      "make": "JAGUAR",
-      "model": "I-PACE",
-      "state": "GA",
-      "severity": "Property Damage. No Injured Reported",
-      "crashWith": "Pickup Truck"
-    },
-    {
-      "date": "MAY-2026",
-      "ym": "2026-05",
-      "entity": "Waymo LLC",
-      "make": "JAGUAR",
-      "model": "I-PACE",
-      "state": "CA",
-      "severity": "Property Damage. No Injured Reported",
-      "crashWith": "Bus"
-    },
-    {
-      "date": "MAY-2026",
-      "ym": "2026-05",
-      "entity": "Waymo LLC",
-      "make": "JAGUAR",
-      "model": "I-PACE",
-      "state": "CA",
-      "severity": "Property Damage. No Injured Reported",
-      "crashWith": "SUV"
-    },
-    {
-      "date": "MAY-2026",
-      "ym": "2026-05",
-      "entity": "Waymo LLC",
-      "make": "JAGUAR",
-      "model": "I-PACE",
-      "state": "CA",
-      "severity": "Property Damage. No Injured Reported",
-      "crashWith": "Passenger Car"
-    },
-    {
-      "date": "MAY-2026",
-      "ym": "2026-05",
-      "entity": "Waymo LLC",
-      "make": "JAGUAR",
-      "model": "I-PACE",
-      "state": "CA",
-      "severity": "Minor W/ Hospitalization",
-      "crashWith": "Passenger Car"
-    },
-    {
-      "date": "MAY-2026",
-      "ym": "2026-05",
-      "entity": "Waymo LLC",
-      "make": "JAGUAR",
-      "model": "I-PACE",
-      "state": "CA",
-      "severity": "Property Damage. No Injured Reported",
-      "crashWith": "Passenger Car"
-    },
-    {
-      "date": "MAY-2026",
-      "ym": "2026-05",
-      "entity": "Waymo LLC",
-      "make": "JAGUAR",
-      "model": "I-PACE",
-      "state": "TX",
-      "severity": "Property Damage. No Injured Reported",
-      "crashWith": "Passenger Car"
-    },
-    {
-      "date": "MAY-2026",
-      "ym": "2026-05",
-      "entity": "Waymo LLC",
-      "make": "JAGUAR",
-      "model": "I-PACE",
-      "state": "GA",
-      "severity": "Property Damage. No Injured Reported",
-      "crashWith": "SUV"
-    },
-    {
-      "date": "MAY-2026",
-      "ym": "2026-05",
-      "entity": "Waymo LLC",
-      "make": "JAGUAR",
-      "model": "I-PACE",
-      "state": "CA",
-      "severity": "Property Damage. No Injured Reported",
-      "crashWith": "Heavy Truck"
-    },
-    {
-      "date": "MAY-2026",
-      "ym": "2026-05",
-      "entity": "Waymo LLC",
-      "make": "JAGUAR",
-      "model": "I-PACE",
-      "state": "CA",
-      "severity": "Minor W/O Hospitalization",
-      "crashWith": "Passenger Car"
-    },
-    {
-      "date": "MAY-2026",
-      "ym": "2026-05",
-      "entity": "Waymo LLC",
-      "make": "JAGUAR",
-      "model": "I-PACE",
-      "state": "TX",
-      "severity": "Property Damage. No Injured Reported",
-      "crashWith": "Passenger Car"
-    },
-    {
-      "date": "MAY-2026",
-      "ym": "2026-05",
-      "entity": "Waymo LLC",
-      "make": "JAGUAR",
-      "model": "I-PACE",
-      "state": "FL",
-      "severity": "Property Damage. No Injured Reported",
-      "crashWith": "SUV"
-    },
-    {
-      "date": "MAY-2026",
-      "ym": "2026-05",
-      "entity": "Zoox, Inc.",
-      "make": "ZOOX",
-      "model": "Zoox",
-      "state": "CA",
-      "severity": "Property Damage. No Injured Reported",
-      "crashWith": "Pickup Truck"
-    },
-    {
-      "date": "MAY-2026",
-      "ym": "2026-05",
-      "entity": "Waymo LLC",
-      "make": "JAGUAR",
-      "model": "I-PACE",
-      "state": "CA",
-      "severity": "Property Damage. No Injured Reported",
-      "crashWith": "Passenger Car"
-    },
-    {
-      "date": "MAY-2026",
-      "ym": "2026-05",
-      "entity": "Waymo LLC",
-      "make": "JAGUAR",
-      "model": "I-PACE",
-      "state": "TX",
-      "severity": "Property Damage. No Injured Reported",
-      "crashWith": "Passenger Car"
-    },
-    {
-      "date": "MAY-2026",
-      "ym": "2026-05",
-      "entity": "Waymo LLC",
-      "make": "JAGUAR",
-      "model": "I-PACE",
-      "state": "TX",
-      "severity": "Property Damage. No Injured Reported",
-      "crashWith": "Other, see Narrative"
-    },
-    {
-      "date": "MAY-2026",
-      "ym": "2026-05",
-      "entity": "Waymo LLC",
-      "make": "JAGUAR",
-      "model": "I-PACE",
-      "state": "CA",
-      "severity": "Property Damage. No Injured Reported",
-      "crashWith": "SUV"
-    },
-    {
-      "date": "MAY-2026",
-      "ym": "2026-05",
-      "entity": "Waymo LLC",
-      "make": "JAGUAR",
-      "model": "I-PACE",
-      "state": "CA",
-      "severity": "Property Damage. No Injured Reported",
-      "crashWith": "Other Fixed Object"
-    },
-    {
-      "date": "MAY-2026",
-      "ym": "2026-05",
-      "entity": "Waymo LLC",
-      "make": "JAGUAR",
-      "model": "I-PACE",
-      "state": "CA",
-      "severity": "Property Damage. No Injured Reported",
-      "crashWith": "Van"
-    },
-    {
-      "date": "MAY-2026",
-      "ym": "2026-05",
-      "entity": "Waymo LLC",
-      "make": "JAGUAR",
-      "model": "I-PACE",
-      "state": "CA",
-      "severity": "Property Damage. No Injured Reported",
-      "crashWith": "Passenger Car"
-    },
-    {
-      "date": "MAY-2026",
-      "ym": "2026-05",
-      "entity": "Waymo LLC",
-      "make": "JAGUAR",
-      "model": "I-PACE",
-      "state": "AZ",
-      "severity": "Property Damage. No Injured Reported",
-      "crashWith": "SUV"
-    },
-    {
-      "date": "APR-2026",
-      "ym": "2026-04",
-      "entity": "Waymo LLC",
-      "make": "JAGUAR",
-      "model": "I-PACE",
-      "state": "GA",
-      "severity": "Property Damage. No Injured Reported",
-      "crashWith": "Heavy Truck"
-    },
-    {
-      "date": "APR-2026",
-      "ym": "2026-04",
-      "entity": "Avride Inc.",
-      "make": "HYUNDAI",
-      "model": "Ioniq 5",
-      "state": "TX",
-      "severity": "Property Damage. No Injured Reported",
-      "crashWith": "Passenger Car"
-    },
-    {
-      "date": "APR-2026",
-      "ym": "2026-04",
-      "entity": "Waymo LLC",
-      "make": "JAGUAR",
-      "model": "I-PACE",
-      "state": "CA",
-      "severity": "Property Damage. No Injured Reported",
-      "crashWith": "Other, see Narrative"
-    },
-    {
-      "date": "APR-2026",
-      "ym": "2026-04",
-      "entity": "Zoox, Inc.",
-      "make": "ZOOX",
-      "model": "Zoox",
-      "state": "NV",
-      "severity": "Property Damage. No Injured Reported",
-      "crashWith": "Pickup Truck"
-    },
-    {
-      "date": "APR-2026",
-      "ym": "2026-04",
-      "entity": "Zoox, Inc.",
-      "make": "ZOOX",
-      "model": "Zoox",
-      "state": "NV",
-      "severity": "Minor W/O Hospitalization",
-      "crashWith": "Passenger Car"
-    },
-    {
-      "date": "APR-2026",
-      "ym": "2026-04",
-      "entity": "Zoox, Inc.",
-      "make": "TOYOTA",
-      "model": "Highlander",
-      "state": "CA",
-      "severity": "Property Damage. No Injured Reported",
-      "crashWith": "Passenger Car"
-    },
-    {
-      "date": "APR-2026",
-      "ym": "2026-04",
-      "entity": "Zoox, Inc.",
-      "make": "ZOOX",
-      "model": "Zoox",
-      "state": "CA",
-      "severity": "Minor W/O Hospitalization",
-      "crashWith": "Passenger Car"
-    },
-    {
-      "date": "APR-2026",
-      "ym": "2026-04",
-      "entity": "Waymo LLC",
-      "make": "JAGUAR",
-      "model": "I-PACE",
-      "state": "TX",
-      "severity": "Property Damage. No Injured Reported",
-      "crashWith": "SUV"
-    },
-    {
-      "date": "APR-2026",
-      "ym": "2026-04",
-      "entity": "Waymo LLC",
-      "make": "JAGUAR",
-      "model": "I-PACE",
-      "state": "TX",
-      "severity": "Property Damage. No Injured Reported",
-      "crashWith": "Pickup Truck"
-    },
-    {
-      "date": "APR-2026",
-      "ym": "2026-04",
-      "entity": "Waymo LLC",
-      "make": "JAGUAR",
-      "model": "I-PACE",
-      "state": "TX",
-      "severity": "Property Damage. No Injured Reported",
-      "crashWith": "Passenger Car"
-    },
-    {
-      "date": "APR-2026",
-      "ym": "2026-04",
-      "entity": "Waymo LLC",
-      "make": "JAGUAR",
-      "model": "I-PACE",
-      "state": "TX",
-      "severity": "Property Damage. No Injured Reported",
-      "crashWith": "SUV"
-    },
-    {
-      "date": "APR-2026",
-      "ym": "2026-04",
-      "entity": "Waymo LLC",
-      "make": "JAGUAR",
-      "model": "I-PACE",
-      "state": "TX",
-      "severity": "Property Damage. No Injured Reported",
-      "crashWith": "Van"
-    },
-    {
-      "date": "APR-2026",
-      "ym": "2026-04",
-      "entity": "Waymo LLC",
-      "make": "JAGUAR",
-      "model": "I-PACE",
-      "state": "CA",
-      "severity": "Property Damage. No Injured Reported",
-      "crashWith": "Heavy Truck"
-    },
-    {
-      "date": "APR-2026",
-      "ym": "2026-04",
-      "entity": "Waymo LLC",
-      "make": "JAGUAR",
-      "model": "I-PACE",
-      "state": "CA",
-      "severity": "Property Damage. No Injured Reported",
-      "crashWith": "SUV"
-    },
-    {
-      "date": "APR-2026",
-      "ym": "2026-04",
-      "entity": "Waymo LLC",
-      "make": "JAGUAR",
-      "model": "I-PACE",
-      "state": "TN",
-      "severity": "Property Damage. No Injured Reported",
-      "crashWith": "Pickup Truck"
-    },
-    {
-      "date": "APR-2026",
-      "ym": "2026-04",
-      "entity": "Waymo LLC",
-      "make": "JAGUAR",
-      "model": "I-PACE",
-      "state": "FL",
-      "severity": "Property Damage. No Injured Reported",
-      "crashWith": "Pickup Truck"
-    },
-    {
-      "date": "APR-2026",
-      "ym": "2026-04",
-      "entity": "Waymo LLC",
-      "make": "JAGUAR",
-      "model": "I-PACE",
-      "state": "AZ",
-      "severity": "Property Damage. No Injured Reported",
-      "crashWith": "Passenger Car"
-    },
-    {
-      "date": "APR-2026",
-      "ym": "2026-04",
-      "entity": "Waymo LLC",
-      "make": "JAGUAR",
-      "model": "I-PACE",
-      "state": "CA",
-      "severity": "Property Damage. No Injured Reported",
-      "crashWith": "Heavy Truck"
-    },
-    {
-      "date": "APR-2026",
-      "ym": "2026-04",
-      "entity": "Waymo LLC",
-      "make": "JAGUAR",
-      "model": "I-PACE",
-      "state": "FL",
-      "severity": "Property Damage. No Injured Reported",
-      "crashWith": "Passenger Car"
-    },
-    {
-      "date": "APR-2026",
-      "ym": "2026-04",
-      "entity": "Avride Inc.",
-      "make": "HYUNDAI",
-      "model": "Ioniq 5",
-      "state": "TX",
-      "severity": "Property Damage. No Injured Reported",
-      "crashWith": "Pickup Truck"
-    },
-    {
-      "date": "APR-2026",
-      "ym": "2026-04",
-      "entity": "Avride Inc.",
-      "make": "HYUNDAI",
-      "model": "Ioniq 5",
-      "state": "TX",
-      "severity": "Property Damage. No Injured Reported",
-      "crashWith": "Pickup Truck"
-    },
-    {
-      "date": "APR-2026",
-      "ym": "2026-04",
-      "entity": "Avride Inc.",
-      "make": "HYUNDAI",
-      "model": "Ioniq 5",
-      "state": "TX",
-      "severity": "Property Damage. No Injured Reported",
-      "crashWith": "Passenger Car"
-    },
-    {
-      "date": "APR-2026",
-      "ym": "2026-04",
-      "entity": "Avride Inc.",
-      "make": "HYUNDAI",
-      "model": "Ioniq 5",
-      "state": "TX",
-      "severity": "Property Damage. No Injured Reported",
-      "crashWith": "SUV"
-    },
-    {
-      "date": "APR-2026",
-      "ym": "2026-04",
-      "entity": "Avride Inc.",
-      "make": "HYUNDAI",
-      "model": "Ioniq 5",
-      "state": "TX",
-      "severity": "Property Damage. No Injured Reported",
-      "crashWith": "SUV"
-    },
-    {
-      "date": "APR-2026",
-      "ym": "2026-04",
-      "entity": "Avride Inc.",
-      "make": "HYUNDAI",
-      "model": "Ioniq 5",
-      "state": "TX",
-      "severity": "Property Damage. No Injured Reported",
-      "crashWith": "Non-Motorist: Cyclist"
-    },
-    {
-      "date": "APR-2026",
-      "ym": "2026-04",
-      "entity": "Avride Inc.",
-      "make": "HYUNDAI",
-      "model": "Ioniq 5",
-      "state": "TX",
-      "severity": "Property Damage. No Injured Reported",
-      "crashWith": "SUV"
-    },
-    {
-      "date": "APR-2026",
-      "ym": "2026-04",
-      "entity": "Avride Inc.",
-      "make": "HYUNDAI",
-      "model": "Ioniq 5",
-      "state": "TX",
-      "severity": "Property Damage. No Injured Reported",
-      "crashWith": "Pickup Truck"
-    },
-    {
-      "date": "APR-2026",
-      "ym": "2026-04",
-      "entity": "Avride Inc.",
-      "make": "HYUNDAI",
-      "model": "Ioniq 5",
-      "state": "TX",
-      "severity": "Property Damage. No Injured Reported",
-      "crashWith": "Passenger Car"
-    },
-    {
-      "date": "APR-2026",
-      "ym": "2026-04",
-      "entity": "Waymo LLC",
-      "make": "ZEEKR",
-      "model": "RT",
-      "state": "AZ",
-      "severity": "Property Damage. No Injured Reported",
-      "crashWith": "Other Fixed Object"
-    },
-    {
-      "date": "APR-2026",
-      "ym": "2026-04",
-      "entity": "Waymo LLC",
-      "make": "JAGUAR",
-      "model": "I-PACE",
-      "state": "CA",
-      "severity": "Property Damage. No Injured Reported",
-      "crashWith": "Passenger Car"
-    },
-    {
-      "date": "APR-2026",
-      "ym": "2026-04",
-      "entity": "Waymo LLC",
-      "make": "JAGUAR",
-      "model": "I-PACE",
-      "state": "CA",
-      "severity": "Property Damage. No Injured Reported",
-      "crashWith": "Van"
-    },
-    {
-      "date": "APR-2026",
-      "ym": "2026-04",
-      "entity": "Waymo LLC",
-      "make": "JAGUAR",
-      "model": "I-PACE",
-      "state": "CA",
-      "severity": "Property Damage. No Injured Reported",
-      "crashWith": "Pickup Truck"
-    },
-    {
-      "date": "APR-2026",
-      "ym": "2026-04",
-      "entity": "Waymo LLC",
-      "make": "JAGUAR",
-      "model": "I-PACE",
-      "state": "CA",
-      "severity": "Property Damage. No Injured Reported",
-      "crashWith": "Passenger Car"
-    },
-    {
-      "date": "APR-2026",
-      "ym": "2026-04",
-      "entity": "Waymo LLC",
-      "make": "JAGUAR",
-      "model": "I-PACE",
-      "state": "CA",
-      "severity": "Property Damage. No Injured Reported",
-      "crashWith": "Heavy Truck"
-    },
-    {
-      "date": "APR-2026",
-      "ym": "2026-04",
-      "entity": "Waymo LLC",
-      "make": "JAGUAR",
-      "model": "I-PACE",
-      "state": "AZ",
-      "severity": "Property Damage. No Injured Reported",
-      "crashWith": "Other, see Narrative"
-    },
-    {
-      "date": "APR-2026",
-      "ym": "2026-04",
-      "entity": "Waymo LLC",
-      "make": "JAGUAR",
-      "model": "I-PACE",
-      "state": "GA",
-      "severity": "Property Damage. No Injured Reported",
-      "crashWith": "Passenger Car"
-    },
-    {
-      "date": "APR-2026",
-      "ym": "2026-04",
-      "entity": "Waymo LLC",
-      "make": "JAGUAR",
-      "model": "I-PACE",
-      "state": "CA",
-      "severity": "Property Damage. No Injured Reported",
-      "crashWith": "SUV"
-    },
-    {
-      "date": "APR-2026",
-      "ym": "2026-04",
-      "entity": "Waymo LLC",
-      "make": "JAGUAR",
-      "model": "I-PACE",
-      "state": "TX",
-      "severity": "Property Damage. No Injured Reported",
-      "crashWith": "SUV"
-    },
-    {
-      "date": "APR-2026",
-      "ym": "2026-04",
-      "entity": "Waymo LLC",
-      "make": "JAGUAR",
-      "model": "I-PACE",
-      "state": "CA",
-      "severity": "Property Damage. No Injured Reported",
-      "crashWith": "SUV"
-    },
-    {
-      "date": "APR-2026",
-      "ym": "2026-04",
-      "entity": "PlusAI Inc",
-      "make": "KENWORTH",
-      "model": "T680",
-      "state": "TX",
-      "severity": "Unknown",
-      "crashWith": "Other, see Narrative"
-    },
-    {
-      "date": "APR-2026",
-      "ym": "2026-04",
-      "entity": "Waymo LLC",
-      "make": "JAGUAR",
-      "model": "I-PACE",
-      "state": "CA",
-      "severity": "Minor W/ Hospitalization",
-      "crashWith": "SUV"
-    },
-    {
-      "date": "APR-2026",
-      "ym": "2026-04",
-      "entity": "Aurora Operations, Inc.",
-      "make": "PETERBILT",
-      "model": "579",
-      "state": "TX",
-      "severity": "Property Damage. No Injured Reported",
-      "crashWith": "Other, see Narrative"
-    },
-    {
-      "date": "APR-2026",
-      "ym": "2026-04",
-      "entity": "Waymo LLC",
-      "make": "JAGUAR",
-      "model": "I-PACE",
-      "state": "CA",
-      "severity": "Property Damage. No Injured Reported",
-      "crashWith": "Passenger Car"
-    },
-    {
-      "date": "APR-2026",
-      "ym": "2026-04",
-      "entity": "Waymo LLC",
-      "make": "JAGUAR",
-      "model": "I-PACE",
-      "state": "TX",
-      "severity": "Property Damage. No Injured Reported",
-      "crashWith": "Passenger Car"
-    },
-    {
-      "date": "APR-2026",
-      "ym": "2026-04",
-      "entity": "May Mobility",
-      "make": "TOYOTA",
-      "model": "Sienna",
-      "state": "GA",
-      "severity": "No Injured Reported",
-      "crashWith": "Passenger Car"
-    },
-    {
-      "date": "APR-2026",
-      "ym": "2026-04",
-      "entity": "Waymo LLC",
-      "make": "JAGUAR",
-      "model": "I-PACE",
-      "state": "GA",
-      "severity": "Property Damage. No Injured Reported",
-      "crashWith": "Pickup Truck"
-    },
-    {
-      "date": "APR-2026",
-      "ym": "2026-04",
-      "entity": "Waymo LLC",
-      "make": "JAGUAR",
-      "model": "I-PACE",
-      "state": "TX",
-      "severity": "Property Damage. No Injured Reported",
-      "crashWith": "Passenger Car"
-    },
-    {
-      "date": "APR-2026",
-      "ym": "2026-04",
-      "entity": "Waymo LLC",
-      "make": "JAGUAR",
-      "model": "I-PACE",
-      "state": "CA",
-      "severity": "Property Damage. No Injured Reported",
-      "crashWith": "Passenger Car"
-    },
-    {
-      "date": "APR-2026",
-      "ym": "2026-04",
-      "entity": "Waymo LLC",
-      "make": "JAGUAR",
-      "model": "I-PACE",
-      "state": "TX",
-      "severity": "Property Damage. No Injured Reported",
-      "crashWith": "SUV"
-    },
-    {
-      "date": "APR-2026",
-      "ym": "2026-04",
-      "entity": "Waymo LLC",
-      "make": "JAGUAR",
-      "model": "I-PACE",
-      "state": "CA",
-      "severity": "Property Damage. No Injured Reported",
-      "crashWith": "Other, see Narrative"
-    },
-    {
-      "date": "APR-2026",
-      "ym": "2026-04",
-      "entity": "Waymo LLC",
-      "make": "JAGUAR",
-      "model": "I-PACE",
-      "state": "AZ",
-      "severity": "Property Damage. No Injured Reported",
-      "crashWith": "Passenger Car"
-    },
-    {
-      "date": "APR-2026",
-      "ym": "2026-04",
-      "entity": "Waymo LLC",
-      "make": "JAGUAR",
-      "model": "I-PACE",
-      "state": "CA",
-      "severity": "Property Damage. No Injured Reported",
-      "crashWith": "SUV"
-    },
-    {
-      "date": "APR-2026",
-      "ym": "2026-04",
-      "entity": "Waymo LLC",
-      "make": "JAGUAR",
-      "model": "I-PACE",
-      "state": "TX",
-      "severity": "Property Damage. No Injured Reported",
-      "crashWith": "Heavy Truck"
-    },
-    {
-      "date": "APR-2026",
-      "ym": "2026-04",
-      "entity": "Waymo LLC",
-      "make": "JAGUAR",
-      "model": "I-PACE",
-      "state": "GA",
-      "severity": "Property Damage. No Injured Reported",
-      "crashWith": "Other, see Narrative"
-    },
-    {
-      "date": "APR-2026",
-      "ym": "2026-04",
-      "entity": "Waymo LLC",
-      "make": "JAGUAR",
-      "model": "I-PACE",
-      "state": "AZ",
-      "severity": "Property Damage. No Injured Reported",
-      "crashWith": "Other Fixed Object"
-    },
-    {
-      "date": "APR-2026",
-      "ym": "2026-04",
-      "entity": "Waymo LLC",
-      "make": "JAGUAR",
-      "model": "I-PACE",
-      "state": "CA",
-      "severity": "Property Damage. No Injured Reported",
-      "crashWith": "SUV"
-    },
-    {
-      "date": "APR-2026",
-      "ym": "2026-04",
-      "entity": "Waymo LLC",
-      "make": "JAGUAR",
-      "model": "I-PACE",
-      "state": "CA",
-      "severity": "Property Damage. No Injured Reported",
-      "crashWith": "Passenger Car"
-    },
-    {
-      "date": "APR-2026",
-      "ym": "2026-04",
-      "entity": "Waymo LLC",
-      "make": "JAGUAR",
-      "model": "I-PACE",
-      "state": "CA",
-      "severity": "Property Damage. No Injured Reported",
-      "crashWith": "Passenger Car"
-    },
-    {
-      "date": "APR-2026",
-      "ym": "2026-04",
-      "entity": "Waymo LLC",
-      "make": "JAGUAR",
-      "model": "I-PACE",
-      "state": "CA",
-      "severity": "Property Damage. No Injured Reported",
-      "crashWith": "Pickup Truck"
-    },
-    {
-      "date": "APR-2026",
-      "ym": "2026-04",
-      "entity": "Waymo LLC",
-      "make": "JAGUAR",
-      "model": "I-PACE",
-      "state": "CA",
-      "severity": "Property Damage. No Injured Reported",
-      "crashWith": "Pickup Truck"
-    },
-    {
-      "date": "APR-2026",
-      "ym": "2026-04",
-      "entity": "Waymo LLC",
-      "make": "JAGUAR",
-      "model": "I-PACE",
-      "state": "AZ",
-      "severity": "Property Damage. No Injured Reported",
-      "crashWith": "SUV"
-    },
-    {
-      "date": "APR-2026",
-      "ym": "2026-04",
-      "entity": "Waymo LLC",
-      "make": "JAGUAR",
-      "model": "I-PACE",
-      "state": "GA",
-      "severity": "Property Damage. No Injured Reported",
-      "crashWith": "Passenger Car"
-    },
-    {
-      "date": "APR-2026",
-      "ym": "2026-04",
-      "entity": "Waymo LLC",
-      "make": "JAGUAR",
-      "model": "I-PACE",
-      "state": "TX",
-      "severity": "Property Damage. No Injured Reported",
-      "crashWith": "Pickup Truck"
-    },
-    {
-      "date": "APR-2026",
-      "ym": "2026-04",
-      "entity": "Waymo LLC",
-      "make": "JAGUAR",
-      "model": "I-PACE",
-      "state": "CA",
-      "severity": "Property Damage. No Injured Reported",
-      "crashWith": "Passenger Car"
-    },
-    {
-      "date": "APR-2026",
-      "ym": "2026-04",
-      "entity": "Waymo LLC",
-      "make": "JAGUAR",
-      "model": "I-PACE",
-      "state": "GA",
-      "severity": "Property Damage. No Injured Reported",
-      "crashWith": "Passenger Car"
-    },
-    {
-      "date": "APR-2026",
-      "ym": "2026-04",
-      "entity": "Waymo LLC",
-      "make": "JAGUAR",
-      "model": "I-PACE",
-      "state": "FL",
-      "severity": "Property Damage. No Injured Reported",
-      "crashWith": "SUV"
     }
   ]
 }
